@@ -1,7 +1,7 @@
 const body = document.querySelector('body');
-const toggle = document.getElementById('toggle');
+const btn = document.getElementById('btn');
 
-toggle.addEventListener('click', () => {
-    toggle.classList.toggle('active');
+btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
     body.classList.toggle('dark');
 });
