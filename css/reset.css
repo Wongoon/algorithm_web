@@ -6,21 +6,21 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+    transition: all 0.3s ease;
 }
 :root{
-    --body-clr: #e4e9f7;
-    --header-clr: #fff;
+    --body-clr: #fff;
+    --header-clr: #e4e9f7;
     --primary-clr: #695cfe;
     --primary-clr-light: #f6f5ff;
     --toggle-clr: #ddd;
-    --text-clr: #707070;
+    --text-clr: #505050;
 }
 body{
     width:100%;
     min-height: 100vh;
     background: var(--body-clr);
     transition: all 0.2s ease;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +31,7 @@ body.dark{
     --primary-clr: #3a3b3c;
     --primary-clr-light: #3a3b3c;
     --toggle-clr: #fff;
-    --text-clr: #ccc;
+    --text-clr: #aaa;
 }
 ul, ol{
     list-style: none;

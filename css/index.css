@@ -1,1 +1,40 @@
 @import url(main.css);
+.container{
+    height: 800px;
+    margin: 100px 0;
+}
+.content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 100px;
+    width: 100%;
+}
+.content .contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    height: 200px;
+    border: 1px solid var(--text-clr);
+    transition: all 0.3s ease;
+}
+body.dark .content .contents{
+    background: var(--header-clr);
+}
+.content .contents span{
+    text-align: center;
+    color: var(--text-clr);
+    margin: 10px;
+}
+.content .contents span.title{
+    font-size: 22px;
+}
+.content .contents span.subtitle{
+    font-size: 14px;
+}
+.content .contents:hover{
+    border: 1px solid var(--primary-clr);
+}
+.content .contents:hover span{
+    color: var(--primary-clr);
+}
