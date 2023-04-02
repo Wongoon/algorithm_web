@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Sorting Visualizer Web</title>
+    <link rel="icon" href="images/icon.svg">
     <link rel="stylesheet" href="css/index.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="js/jquery-1.12.3.js" type="text/javascript"></script>
-    <script src="js/main.js" defet type="text/javascript"></script>
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
 </head>
 <body class="">
     <header>
         <ul class="nav">
             <li><a href="#">홈</a></li>
-            <li><span>정렬</span>
-                <ul class="nav_in">
+            <li id="sub"><a href="#" class="dontmove">정렬</a>
+                <ul class="nav_in up">
                     <li><a href="#">단순 선택 정렬</a></li>
                     <li><a href="#">단순 삽입 정렬</a></li>
                     <li><a href="#">버블 정렬</a></li>
@@ -29,7 +28,9 @@
             <li><a href="#">코드</a></li>
         </ul>
     </header>
+
     <div class="container">
+        <div class="main_title">Sorting Visualizer Web</div>
         <div class="content">
             <a href="#" class="contents">
                 <span class="title">단순 선택 정렬</span>
@@ -69,6 +70,7 @@
             </a>
         </div>
     </div>
+
     <footer>
         <div class="bt_submenu">
             <ul class="bt_nav">
@@ -101,12 +103,6 @@
             </div>
         </div>
     </footer>
-    <script src="js/darkmode.js" type="text/javascript"></script>
-    <script>
-        const dontmove = document.querySelector('.dontmove');
-        dontmove.addEventListener('click', (e) => {
-            e.preventDefault();
-        })
-    </script>
+    <script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>

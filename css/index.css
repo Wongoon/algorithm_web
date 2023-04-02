@@ -1,7 +1,29 @@
 @import url(main.css);
+@font-face {
+    font-family: '카페24단정해';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Danjunghae.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .container{
-    height: 800px;
-    margin: 100px 0;
+    height: 1100px;
+    margin-bottom: 100px;
+}
+.main_title{
+    height: 300px;
+    line-height: 300px;
+    font-size: 60pt;
+    text-align: center;
+    font-family: '카페24단정해';
+    color: #c0caea;
+    -webkit-text-stroke: 1px #788dd2;
+    text-shadow: 2pt 2pt #788dd2;
+    transition: all 0.3s;
+}
+body.dark .main_title{
+    color: #788dd2;
+    -webkit-text-stroke-color: #2c2f3d;
+    text-shadow: 2pt 2pt #1d1f2b;
 }
 .content{
     display: grid;
@@ -15,16 +37,14 @@
     justify-content: center;
     width: 400px;
     height: 200px;
-    border: 1px solid var(--text-clr);
-    transition: all 0.3s ease;
-}
-body.dark .content .contents{
-    background: var(--header-clr);
+    border: 2px solid var(--text-clr);
+    transition: all 0.3s;
 }
 .content .contents span{
     text-align: center;
-    color: var(--text-clr);
+    color: #000;
     margin: 10px;
+    transition: all 0.3s;
 }
 .content .contents span.title{
     font-size: 22px;
@@ -33,8 +53,17 @@ body.dark .content .contents{
     font-size: 14px;
 }
 .content .contents:hover{
-    border: 1px solid var(--primary-clr);
+    border: 2px solid var(--primary-clr);
 }
 .content .contents:hover span{
     color: var(--primary-clr);
+}
+body.dark .content .contents span{
+    color: var(--text-clr);
+}
+body.dark .content .contents:hover{
+    border: 2px solid var(--toggle-clr);
+}
+body.dark .content .contents:hover span{
+    color: var(--toggle-clr);
 }
