@@ -47,10 +47,16 @@ header{
     border-top: 1px solid var(--text-clr);
     transition: all 0.3s;
 }
+.nav_in > li:last-child{
+    border-bottom: 1px solid var(--text-clr);
+}
 .nav_in > li:hover{
     border-left: 1px solid var(--primary-clr);
     border-right: 1px solid var(--primary-clr);
     border-top: 1px solid var(--primary-clr);
+}
+.nav_in > li:last-child:hover{
+    border-bottom: 1px solid var(--primary-clr);
 }
 .nav_in > li > a{
     display: block;
@@ -70,7 +76,6 @@ body.dark .nav > li > a:hover{
 body.dark .nav_in > li > a:hover{
     color: var(--toggle-clr);
 }
-
 .nav_in.up{
     height: 0px;
     animation: slide_up 0.5s;
@@ -79,7 +84,6 @@ body.dark .nav_in > li > a:hover{
     height: 450px;
     animation: slide_down 0.5s;
 }
-
 @keyframes slide_up{
     0%{
         height: 450px;
@@ -97,13 +101,15 @@ body.dark .nav_in > li > a:hover{
         height: 450px;
     }
 }
-/* body.dark .nav > li:hover > a */
+
 .container{
     width: 1400px;
+    min-height: 300px;
     margin: 0 auto;
     position: relative;
     background: var(--body-clr);
 }
+
 footer{
     width: 100%;
     height: 470px;
@@ -128,7 +134,7 @@ footer{
     height: 40px;
     text-align: center;
 }
-.bt_nav li a, .bt_nav-in li a, .bt_nav li span{
+.bt_nav li a, .bt_nav_in li a, .bt_nav li span{
     display: block;
     width: 100%;
     height: 100%;
@@ -136,13 +142,13 @@ footer{
     line-height: 40px;
     cursor: pointer;
 }
-.bt_nav li a:hover, .bt_nav-in li a:hover, .bt_nav li span:hover{
+.bt_nav li a:hover, .bt_nav_in li a:hover, .bt_nav li span:hover{
     color: var(--primary-clr);
 }
 body.dark .bt_nav li a:hover, body.dark .bt_nav li span:hover{
     color: var(--toggle-clr);
 }
-.bt_nav-in li{
+.bt_nav_in li{
     border-top: 1px solid var(--primary-clr);
 }
 footer .footer_bt{

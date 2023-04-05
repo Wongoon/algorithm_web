@@ -20,13 +20,10 @@ menu.addEventListener("click", function(){
         navIn.style.display = 'block';
         navIn.classList.add('down');
         navIn.classList.remove('up');
-
-        toggle = !toggle;
     }
     else{
         navIn.classList.add('up');
         navIn.classList.remove('down');
-        
-        toggle = !toggle;
     }
+    toggle = !toggle;
 });
