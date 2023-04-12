@@ -13,7 +13,7 @@
     --body-clr: #fff;
     --header-clr: #e4e9f7;
     --primary-clr: #695cfe;
-    --primary-clr-light: #f6f5ff;
+    --primary-clr-light: #e6e6ff;
     --toggle-clr: #ddd;
     --text-clr: #505050;
 }
@@ -31,7 +31,7 @@ body.dark{
     --body-clr: #0d1117;
     --header-clr: #070b11;
     --primary-clr: #2a265f;
-    --primary-clr-light: #3a3b3c;
+    --primary-clr-light: #1f1f20;
     --toggle-clr: #fff;
     --text-clr: #aaa;
 }
