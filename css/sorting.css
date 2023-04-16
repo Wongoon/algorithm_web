@@ -12,14 +12,12 @@
     height: 500px;
     margin-bottom: 20px;
 }
-
 .bar {
     width: 20px;
     margin-right: 5px;
     background: var(--primary-clr);
     transition: none;
 }
-
 button {
     margin-right: 5px;
 }
