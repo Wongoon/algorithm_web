@@ -5,6 +5,7 @@ const options = document.querySelectorAll('.menu li');
 const selected = document.querySelector('.selected');
 const menubar = document.querySelector('.menu');
 
+
 select.addEventListener('click', function(){
     select.classList.toggle('select-clicked');
     caret.classList.toggle('caret-rotate');
@@ -19,7 +20,7 @@ options.forEach(option => {
         menubar.classList.remove('menu-open');
         options.forEach(option => {
             option.classList.remove('active');
-        })
+        });
         option.classList.add('active');
-    })
-})
+    });
+});

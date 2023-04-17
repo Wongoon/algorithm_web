@@ -8,17 +8,22 @@ let animationPaused = true;
 
 let dropdownMenu = document.querySelector('.dropdown');
 let sizeRange = document.getElementById("size");
-let RandomBtn = document.getElementById("randombtn");
+let RandomBtn = document.getElementById("random");
 let speedRange = document.getElementById("speed");
 let speedText = document.getElementById("rangeValue");
+let start = document.getElementById('play');
+let pause = document.getElementById('pause');
+let reset = document.getElementById('reset');
+
 let size = parseInt(sizeRange.innerText);
 let speed = parseFloat(speedRange.value);
 let interval = 500 / speed;
 speedText.textContent = String(speed) + 'x';
 
-RandomBtn.addEventListener("click", function () {
+RandomBtn.addEventListener("click", function(){
     generateArray(size);
 });
+
 dropdownMenu.addEventListener('click', function(){
     size = parseInt(sizeRange.innerText);
 })
@@ -128,6 +133,12 @@ function resetAnimation() {
     minIndex = 0;
     pauseAnimation();
 }
+
+play.addEventListener('click', startAnimation);
+
+pause.addEventListener('click', pauseAnimation);
+
+reset.addEventListener('click', resetAnimation);
 
 // Initialize
 generateArray(size);

@@ -5,6 +5,7 @@
     <title>Sorting Visualizer Web</title>
     <link rel="icon" href="../../images/icon.svg">
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/sorting.css">
 </head>
 <body class="">
     <header>
@@ -29,9 +30,32 @@
     </header>
 
     <div class="container">
-        
-    </div>
-
+        <div class="canvas"></div>
+        <div class="control">
+            <div class="value_control">
+                <input type="range" name="speed" id="speed" min = 0.5 max = 8.0 step = 0.5 value = 4.0 onmousemove = "rangeSlider(this.value)" onchange = "rangeSlider(this.value)">
+                <span id="rangeValue"></span>
+                <div class="dropdown">
+                    <div class="select">
+                        <span class="selected" id = "size">50</span>
+                        <div class="caret"></div>
+                    </div>
+                    <ul class="menu">
+                        <li>10</li>
+                        <li>25</li>
+                        <li class="active">50</li>
+                        <li>75</li>
+                        <li>100</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="btnlist">
+                <span class="btn" id="random">Random Array</span>
+                <span class="btn" id="play">Play</span>
+                <span class="btn" id="pause">Pause</span>
+                <span class="btn" id="reset">Reset</span>
+            </div>
+        </div>
     <footer class="up">
         <div class="bt_submenu">
             <ul class="bt_nav">
@@ -65,5 +89,7 @@
         </div>
     </footer>
     <script src="../../js/main.js" type="text/javascript"></script>
+    <script src="../../js/selection.js" type="text/javascript"></script>
+    <script src="../../js/visualizer.js" type="text/javascript"></script>
 </body>
 </html>
