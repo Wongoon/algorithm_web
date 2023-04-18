@@ -78,22 +78,21 @@ function swapBars(index1, index2) {
     bars[index2].style.height = tempBarHeight;
 }
 
-// Selection sort algorithm
-function selectionSort() {
-    if (currentIndex >= arr.length - 1) {
+// Insertion sort algorithm
+function insertionSort() {
+    if (currentIndex >= arr.length) {
         pauseAnimation();
         return;
     }
-    minIndex = currentIndex;
-    for (let i = currentIndex + 1; i < arr.length; i++) {
-        if (arr[i] < arr[minIndex]) {
-            minIndex = i;
-        }
+    const currentVal = arr[currentIndex];
+    let j = currentIndex - 1;
+    while (j >= 0 && arr[j] > currentVal) {
+        swapBars(j + 1, j);
+        j--;
     }
-    swapBars(currentIndex, minIndex);
+    arr[j + 1] = currentVal;
     currentIndex++;
-    
-    if(currentIndex == arr.length - 1){
+    if (currentIndex == arr.length) {
         start.classList.remove('btn_invisible');
         pause.classList.add('btn_invisible');
     }
@@ -107,7 +106,7 @@ function startAnimation() {
     }
     else {
         animationId = setInterval(() => {
-            selectionSort();
+            insertionSort();
         }, interval);
     }
 }
@@ -116,7 +115,7 @@ function startAnimation() {
 function continueAnimation() {
     if (animationId === null) {
         animationId = setInterval(() => {
-            selectionSort();
+            insertionSort();
         }, interval);
     }
 }

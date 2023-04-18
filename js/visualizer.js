@@ -4,6 +4,8 @@ const caret = document.querySelector('.caret');
 const options = document.querySelectorAll('.menu li');
 const selected = document.querySelector('.selected');
 const menubar = document.querySelector('.menu');
+const startBtn = document.getElementById('play');
+const pauseBtn = document.getElementById('pause');
 
 
 select.addEventListener('click', function(){

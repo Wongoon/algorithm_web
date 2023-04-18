@@ -6,7 +6,7 @@
     margin-top: 30px;
 }
 .canvas {
-    width: 1200px;
+    width: 100%;
     display: flex;
     align-items: flex-end;
     height: 500px;
@@ -143,7 +143,7 @@ button {
     opacity: 1;
 }
 .btnlist{
-    width: 800px;
+    width: 600px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -165,4 +165,12 @@ button {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     transform: scale(0.95);
     transition: none;
+}
+.btn_invisible{
+    display: none !important;
+}
+
+.contents{
+    width: 100%;
+    text-align: center;
 }

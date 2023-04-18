@@ -78,26 +78,25 @@ function swapBars(index1, index2) {
     bars[index2].style.height = tempBarHeight;
 }
 
-// Selection sort algorithm
-function selectionSort() {
-    if (currentIndex >= arr.length - 1) {
-        pauseAnimation();
-        return;
-    }
-    minIndex = currentIndex;
-    for (let i = currentIndex + 1; i < arr.length; i++) {
-        if (arr[i] < arr[minIndex]) {
-            minIndex = i;
+// Shell sort algorithm
+function shellSort() {
+    let tempBarHeight;
+    for (let gap = Math.floor(arr.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
+        for (let i = gap; i < arr.length; i++) {
+            let j = i;
+            let tmp = arr[i];
+            tempBarHeight = bars[i].style.height;
+            while (j >= gap && arr[j - gap] > tmp) {
+                arr[j] = arr[j - gap];
+                bars[j].style.height = bars[j - gap].style.height;
+                j -= gap;
+            }
+            bars[j].style.height = tempBarHeight;
+            arr[j] = tmp;
         }
     }
-    swapBars(currentIndex, minIndex);
-    currentIndex++;
-    
-    if(currentIndex == arr.length - 1){
-        start.classList.remove('btn_invisible');
-        pause.classList.add('btn_invisible');
-    }
 }
+
 
 // Start animation
 function startAnimation() {
@@ -107,7 +106,7 @@ function startAnimation() {
     }
     else {
         animationId = setInterval(() => {
-            selectionSort();
+            shellSort();
         }, interval);
     }
 }
@@ -116,7 +115,7 @@ function startAnimation() {
 function continueAnimation() {
     if (animationId === null) {
         animationId = setInterval(() => {
-            selectionSort();
+            shellSort();
         }, interval);
     }
 }
@@ -149,7 +148,6 @@ reset.addEventListener('click', function(){
 
 play.addEventListener('click', function(){
     startAnimation();
-    console.log(animationId + ' + ' + animationPaused);
     play.classList.add('btn_invisible');
     pause.classList.remove('btn_invisible');
 });

@@ -78,26 +78,25 @@ function swapBars(index1, index2) {
     bars[index2].style.height = tempBarHeight;
 }
 
-// Selection sort algorithm
-function selectionSort() {
+// Bubble sort algorithm
+function bubbleSort() {
     if (currentIndex >= arr.length - 1) {
         pauseAnimation();
         return;
     }
-    minIndex = currentIndex;
-    for (let i = currentIndex + 1; i < arr.length; i++) {
-        if (arr[i] < arr[minIndex]) {
-            minIndex = i;
+    for (let i = 0; i < arr.length - currentIndex - 1; i++) {
+        if (arr[i] > arr[i+1]) {
+            swapBars(i, i+1);
         }
     }
-    swapBars(currentIndex, minIndex);
     currentIndex++;
-    
+
     if(currentIndex == arr.length - 1){
         start.classList.remove('btn_invisible');
         pause.classList.add('btn_invisible');
     }
 }
+
 
 // Start animation
 function startAnimation() {
@@ -107,7 +106,7 @@ function startAnimation() {
     }
     else {
         animationId = setInterval(() => {
-            selectionSort();
+            bubbleSort();
         }, interval);
     }
 }
@@ -116,7 +115,7 @@ function startAnimation() {
 function continueAnimation() {
     if (animationId === null) {
         animationId = setInterval(() => {
-            selectionSort();
+            bubbleSort();
         }, interval);
     }
 }
