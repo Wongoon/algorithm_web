@@ -5,17 +5,18 @@
     flex-direction: column;
     margin-top: 30px;
 }
-.canvas {
-    width: 1200px;
+.canvas{
+    width: calc(100% - 200px);
     display: flex;
     align-items: flex-end;
     height: 500px;
     margin-bottom: 20px;
+    background: #eee;
+    padding: 20px;
 }
-.bar {
-    width: 20px;
+.bar{
     margin-right: 5px;
-    background: var(--primary-clr);
+    background: #695cfe;
     transition: none;
 }
 button {
@@ -158,11 +159,11 @@ button {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(105, 92, 254, 0.1);
     transition: box-shadow 0.2s;
 }
 .btn:hover .btn:focus, .btn:active{
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 40px rgba(105, 92, 254, 0.5);
     transform: scale(0.95);
     transition: none;
 }
