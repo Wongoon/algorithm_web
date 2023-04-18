@@ -59,10 +59,10 @@ function generateBars() {
     bars = [];
     for (let i = 0; i < arr.length; i++) {
         const bar = document.createElement('div');
-        let height = 500 / size;
+        let height = 100 / size;
         bar.classList.add('bar');
         bar.style.width = 'calc(100% / ' + size + ')';
-        bar.style.height = arr[i] * height + 'px';
+        bar.style.height = arr[i] * height + '%';
         canvas.appendChild(bar);
         bars.push(bar);
     }
