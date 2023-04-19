@@ -78,26 +78,48 @@ function swapBars(index1, index2) {
     bars[index2].style.height = tempBarHeight;
 }
 
-// Selection sort algorithm
-function selectionSort() {
-    if (currentIndex >= arr.length - 1) {
-        pauseAnimation();
+// Merge sort algorithm
+function mergeSort(arr, left, right) {
+    if (left >= right) {
         return;
     }
-    minIndex = currentIndex;
-    for (let i = currentIndex + 1; i < arr.length; i++) {
-        if (arr[i] < arr[minIndex]) {
-            minIndex = i;
-            // bars[minIndex].style.background = "#ff5555";
+    const middle = Math.floor((left + right) / 2);
+    mergeSort(arr, left, middle);
+    mergeSort(arr, middle + 1, right);
+    merge(arr, left, middle, right);
+}
+
+function merge(arr, left, middle, right) {
+    const tempArr = [];
+    let i = left;
+    let j = middle + 1;
+    while (i <= middle && j <= right) {
+        if (arr[i] < arr[j]) {
+            tempArr.push(arr[i]);
+            i++;
+        } else {
+            tempArr.push(arr[j]);
+            j++;
         }
     }
-    swapBars(currentIndex, minIndex);
-    currentIndex++;
-    
-    if(currentIndex == arr.length - 1){
-        start.classList.remove('btn_invisible');
-        pause.classList.add('btn_invisible');
+    while (i <= middle) {
+        tempArr.push(arr[i]);
+        i++;
     }
+    while (j <= right) {
+        tempArr.push(arr[j]);
+        j++;
+    }
+    for (let k = 0; k < tempArr.length; k++) {
+        arr[left + k] = tempArr[k];
+    }
+}
+
+// Start merge sort
+function startMergeSort() {
+    pauseAnimation();
+    mergeSort(arr, 0, arr.length - 1);
+    generateBars();
 }
 
 // Start animation
@@ -108,7 +130,7 @@ function startAnimation() {
     }
     else {
         animationId = setInterval(() => {
-            selectionSort();
+            startMergeSort();
         }, interval);
     }
 }
@@ -117,7 +139,7 @@ function startAnimation() {
 function continueAnimation() {
     if (animationId === null) {
         animationId = setInterval(() => {
-            selectionSort();
+            startMergeSort();
         }, interval);
     }
 }
@@ -148,9 +170,10 @@ reset.addEventListener('click', function(){
     resetAnimation();
 });
 
-start.addEventListener('click', function(){
+play.addEventListener('click', function(){
     startAnimation();
-    start.classList.add('btn_invisible');
+    console.log(animationId + ' + ' + animationPaused);
+    play.classList.add('btn_invisible');
     pause.classList.remove('btn_invisible');
 });
 

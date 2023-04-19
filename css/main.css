@@ -107,7 +107,6 @@ body.dark .nav_in > li > a:hover{
     min-height: 300px;
     margin: 0 auto;
     position: relative;
-    background: var(--body-clr);
 }
 
 footer{

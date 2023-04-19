@@ -15,19 +15,19 @@ let start = document.getElementById('play');
 let pause = document.getElementById('pause');
 let reset = document.getElementById('reset');
 
-let size = parseInt(sizeRange.innerText);
+let size = parseInt(sizeRange.value);
 let speed = parseFloat(speedRange.value);
 let interval = 500 / speed;
 speedText.textContent = String(speed) + 'x';
 
 RandomBtn.addEventListener("click", function(){
     generateArray(size);
-    pauseBtn.classList.add('btn_invisible');
-    startBtn.classList.remove('btn_invisible');
+    pause.classList.add('btn_invisible');
+    start.classList.remove('btn_invisible');
 });
 
 dropdownMenu.addEventListener('click', function(){
-    size = parseInt(sizeRange.innerText);
+    size = parseInt(sizeRange.value);
 })
 
 function rangeSlider(value){
@@ -59,10 +59,10 @@ function generateBars() {
     bars = [];
     for (let i = 0; i < arr.length; i++) {
         const bar = document.createElement('div');
-        let height = 500 / size;
+        let height = 100 / size;
         bar.classList.add('bar');
         bar.style.width = 'calc(100% / ' + size + ')';
-        bar.style.height = arr[i] * height + 'px';
+        bar.style.height = arr[i] * height + '%';
         canvas.appendChild(bar);
         bars.push(bar);
     }
@@ -80,22 +80,28 @@ function swapBars(index1, index2) {
 
 // Shell sort algorithm
 function shellSort() {
-    let tempBarHeight;
-    for (let gap = Math.floor(arr.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
-        for (let i = gap; i < arr.length; i++) {
-            let j = i;
-            let tmp = arr[i];
-            tempBarHeight = bars[i].style.height;
-            while (j >= gap && arr[j - gap] > tmp) {
-                arr[j] = arr[j - gap];
-                bars[j].style.height = bars[j - gap].style.height;
-                j -= gap;
-            }
-            bars[j].style.height = tempBarHeight;
-            arr[j] = tmp;
-        }
+    if (currentIndex >= arr.length - 1) {
+      pauseAnimation();
+      return;
     }
-}
+    let gap = Math.floor(arr.length / 2);
+    while (gap > 0) {
+      for (let i = gap; i < arr.length; i++) {
+        let temp = arr[i];
+        let j = i;
+        while (j >= gap && arr[j - gap] > temp) {
+          swapBars(j, j - gap);
+          j -= gap;
+        }
+        arr[j] = temp;
+      }
+      gap = Math.floor(gap / 2);
+    }
+    currentIndex = arr.length - 1;
+    start.classList.remove('btn_invisible');
+    pause.classList.add('btn_invisible');
+  }
+  
 
 
 // Start animation
@@ -141,8 +147,8 @@ function resetAnimation() {
 }
 
 reset.addEventListener('click', function(){
-    pauseBtn.classList.add('btn_invisible');
-    startBtn.classList.remove('btn_invisible');
+    pause.classList.add('btn_invisible');
+    start.classList.remove('btn_invisible');
     resetAnimation();
 });
 
@@ -153,8 +159,8 @@ play.addEventListener('click', function(){
 });
 
 pause.addEventListener('click', function(){
-    pauseBtn.classList.add('btn_invisible');
-    startBtn.classList.remove('btn_invisible');
+    pause.classList.add('btn_invisible');
+    start.classList.remove('btn_invisible');
     pauseAnimation();
 });
 

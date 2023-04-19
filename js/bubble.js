@@ -15,19 +15,19 @@ let start = document.getElementById('play');
 let pause = document.getElementById('pause');
 let reset = document.getElementById('reset');
 
-let size = parseInt(sizeRange.innerText);
+let size = parseInt(sizeRange.value);
 let speed = parseFloat(speedRange.value);
 let interval = 500 / speed;
 speedText.textContent = String(speed) + 'x';
 
 RandomBtn.addEventListener("click", function(){
     generateArray(size);
-    pauseBtn.classList.add('btn_invisible');
-    startBtn.classList.remove('btn_invisible');
+    pause.classList.add('btn_invisible');
+    start.classList.remove('btn_invisible');
 });
 
 dropdownMenu.addEventListener('click', function(){
-    size = parseInt(sizeRange.innerText);
+    size = parseInt(sizeRange.value);
 })
 
 function rangeSlider(value){
@@ -59,10 +59,10 @@ function generateBars() {
     bars = [];
     for (let i = 0; i < arr.length; i++) {
         const bar = document.createElement('div');
-        let height = 500 / size;
+        let height = 100 / size;
         bar.classList.add('bar');
         bar.style.width = 'calc(100% / ' + size + ')';
-        bar.style.height = arr[i] * height + 'px';
+        bar.style.height = arr[i] * height + '%';
         canvas.appendChild(bar);
         bars.push(bar);
     }
@@ -141,8 +141,8 @@ function resetAnimation() {
 }
 
 reset.addEventListener('click', function(){
-    pauseBtn.classList.add('btn_invisible');
-    startBtn.classList.remove('btn_invisible');
+    pause.classList.add('btn_invisible');
+    start.classList.remove('btn_invisible');
     resetAnimation();
 });
 
@@ -154,8 +154,8 @@ play.addEventListener('click', function(){
 });
 
 pause.addEventListener('click', function(){
-    pauseBtn.classList.add('btn_invisible');
-    startBtn.classList.remove('btn_invisible');
+    pause.classList.add('btn_invisible');
+    start.classList.remove('btn_invisible');
     pauseAnimation();
 });
 
