@@ -29,24 +29,27 @@ ul.tabmenu li.tablink.current{
 .contents{
     display: none;
     width: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 .contents.current{
-    display: block;
+    display: flex;
 }
 .contents .codes{
-    width: 100%;
+    width: 1400px;
     display: flex;
     justify-content: center;
+    align-items: stretch;
     height: 500px;
 }
-.contents .codes .code{
+.contents .codes .js,
+.contents .codes .java{
     width: 50%;
+    border: 1px solid black;
+}
+.contents .codes .code{
+    width: 100%;
     font-size: 20px;
     font-family: Consolas;
-    text-align: left;
-    border: 1px solid black;
 }
