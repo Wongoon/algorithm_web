@@ -6,21 +6,20 @@
 }
 ul.tabmenu li.tablink{
     display: inline-block;
-    background: #fff;
+    background: var(--body-clr);
     width: 130px;
     color: var(--text-clr);
     padding: 20px 10px;
     cursor: pointer;
     text-align: center;
     border: 3px solid transparent;
-    transition: all 0.5s ease;
 }
 ul.tabmenu li.tablink:hover{
-    color: var(--primary-clr);
+    color: #695cfe;
 }
 ul.tabmenu li.tablink.current{
-    border-bottom: 3px solid var(--primary-clr);
-    color: var(--primary-clr);
+    border-bottom: 3px solid #695cfe;
+    color: #695cfe;
 }
 .content{
     margin: 50px 0;
@@ -41,15 +40,85 @@ ul.tabmenu li.tablink.current{
     display: flex;
     justify-content: center;
     align-items: stretch;
-    height: 500px;
+    margin: 30px 0;
 }
 .contents .codes .js,
 .contents .codes .java{
     width: 50%;
-    border: 1px solid black;
+}
+.contents .codes .title{
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+    border: 1px solid var(--black);
+    border-bottom: none;
+    color: var(--black);
 }
 .contents .codes .code{
+    padding: 10px;
     width: 100%;
     font-size: 20px;
+    border: 1px solid var(--black);
+    background: #282c34;
+    line-height: 1.3em;
+    height: var(--h);
+}
+.contents .codes .code,
+.contents .codes .code span{
     font-family: Consolas;
+    user-select: text;
+    color: #afbcc6;
+}
+.contents .codes .code span.magenta{
+    color: #c678dc;
+}
+.contents .codes .code span.blue{
+    color: #4d94cd;
+}
+.contents .codes .code span.yellow{
+    color: #e4bf1c;
+}
+.contents .codes .code span.red{
+    color: #c96a68;
+}
+.contents .codes .code span.cyan{
+    color: #56b6c2;
+}
+.contents .codes .code span.green{
+    color: #98c379;
+}
+.contents .codes .code span.orange{
+    color: #d39b61;
+}
+.contents .describe{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    width: 1400px;
+    margin: 30px 0;
+}
+.contents .bigO{
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid var(--black);
+    font-size: 18px;
+}
+.contents .bigO div,
+.contents .bigO div span,
+.contents .bigO div span sup, 
+.contents .bigO div span sub{
+    color: var(--black);
+}
+.contents .description{
+    padding: 10px;
+    width: 50%;
+    border: 1px solid var(--black);
+    color: var(--black);
+    word-break: keep-all;
+    line-height: 2em;
 }

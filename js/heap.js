@@ -78,30 +78,59 @@ function swapBars(index1, index2) {
     bars[index2].style.height = tempBarHeight;
 }
 
-// Shell sort algorithm
-function shellSort() {
-    if (currentIndex >= arr.length - 1) {
-        pauseAnimation();
-        return;
+
+function heapSort() {
+    buildMaxHeap();
+    let heapSize = arr.length;
+    for (let i = arr.length - 1; i > 0; i--) {
+        swapBars(0, i);
+        heapSize--;
+        heapify(0, heapSize);
     }
-    let gap = Math.floor(arr.length / 2);
-    while (gap > 0) {
-        for (let i = gap; i < arr.length; i++) {
-            let temp = arr[i];
-            let j = i;
-            while (j >= gap && arr[j - gap] > temp) {
-                swapBars(j, j - gap);
-                j -= gap;
-            }
-            arr[j] = temp;
-        }
-        gap = Math.floor(gap / 2);
-    }
-    currentIndex = arr.length - 1;
-    start.classList.remove('btn_invisible');
-    pause.classList.add('btn_invisible');
 }
-  
+
+function buildMaxHeap() {
+    const heapSize = arr.length;
+    for (let i = Math.floor(heapSize / 2); i >= 0; i--) {
+        heapify(i, heapSize);
+    }
+}
+
+function heapify(index, heapSize) {
+    let largest = index;
+    const left = 2 * index + 1;
+    const right = 2 * index + 2;
+
+    if (left < heapSize && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    if (right < heapSize && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    if (largest !== index) {
+        swapBars(index, largest);
+        heapify(largest, heapSize);
+    }
+}
+
+
+function heapify(n, i) {
+    let largest = i;
+    let l = 2 * i + 1;
+    let r = 2 * i + 2;
+    if (l < n && arr[l] > arr[largest]) {
+        largest = l;
+    }
+    if (r < n && arr[r] > arr[largest]) {
+        largest = r;
+    }
+    if (largest !== i) {
+        swapBars(i, largest);
+        heapify(n, largest);
+    }
+}
 
 
 // Start animation
@@ -112,7 +141,7 @@ function startAnimation() {
     }
     else {
         animationId = setInterval(() => {
-            shellSort();
+            heapSort();
         }, interval);
     }
 }
@@ -121,7 +150,7 @@ function startAnimation() {
 function continueAnimation() {
     if (animationId === null) {
         animationId = setInterval(() => {
-            shellSort();
+            heapSort();
         }, interval);
     }
 }
@@ -152,9 +181,9 @@ reset.addEventListener('click', function(){
     resetAnimation();
 });
 
-play.addEventListener('click', function(){
+start.addEventListener('click', function(){
     startAnimation();
-    play.classList.add('btn_invisible');
+    start.classList.add('btn_invisible');
     pause.classList.remove('btn_invisible');
 });
 

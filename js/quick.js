@@ -78,32 +78,33 @@ function swapBars(index1, index2) {
     bars[index2].style.height = tempBarHeight;
 }
 
-// Shell sort algorithm
-function shellSort() {
-    if (currentIndex >= arr.length - 1) {
-        pauseAnimation();
-        return;
+// Quick sort algorithm
+function quickSort(lowIndex, highIndex) {
+    if (lowIndex < highIndex) {
+        let partitionIndex = partition(lowIndex, highIndex);
+        quickSort(lowIndex, partitionIndex - 1);
+        quickSort(partitionIndex + 1, highIndex);
     }
-    let gap = Math.floor(arr.length / 2);
-    while (gap > 0) {
-        for (let i = gap; i < arr.length; i++) {
-            let temp = arr[i];
-            let j = i;
-            while (j >= gap && arr[j - gap] > temp) {
-                swapBars(j, j - gap);
-                j -= gap;
-            }
-            arr[j] = temp;
-        }
-        gap = Math.floor(gap / 2);
-    }
-    currentIndex = arr.length - 1;
-    start.classList.remove('btn_invisible');
-    pause.classList.add('btn_invisible');
 }
   
+// Partition the array for quick sort
+function partition(lowIndex, highIndex) {
+    // Use the last element as the pivot
+    let pivot = arr[highIndex];
+    let i = lowIndex - 1;
 
+    for (let j = lowIndex; j < highIndex; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swapBars(i, j);
+        }
+    }
 
+    // Move the pivot to its final position
+    swapBars(i + 1, highIndex);
+    return i + 1;
+}
+  
 // Start animation
 function startAnimation() {
     animationPaused = false;
@@ -112,7 +113,7 @@ function startAnimation() {
     }
     else {
         animationId = setInterval(() => {
-            shellSort();
+            quickSort(0, size - 1);
         }, interval);
     }
 }
@@ -121,7 +122,7 @@ function startAnimation() {
 function continueAnimation() {
     if (animationId === null) {
         animationId = setInterval(() => {
-            shellSort();
+            quickSort(0, size - 1);
         }, interval);
     }
 }
@@ -152,9 +153,9 @@ reset.addEventListener('click', function(){
     resetAnimation();
 });
 
-play.addEventListener('click', function(){
+start.addEventListener('click', function(){
     startAnimation();
-    play.classList.add('btn_invisible');
+    start.classList.add('btn_invisible');
     pause.classList.remove('btn_invisible');
 });
 

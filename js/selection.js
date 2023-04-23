@@ -88,7 +88,6 @@ function selectionSort() {
     for (let i = currentIndex + 1; i < arr.length; i++) {
         if (arr[i] < arr[minIndex]) {
             minIndex = i;
-            // bars[minIndex].style.background = "#ff5555";
         }
     }
     swapBars(currentIndex, minIndex);

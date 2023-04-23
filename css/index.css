@@ -17,7 +17,6 @@
     color: #c0caea;
     -webkit-text-stroke: 1px #788dd2;
     text-shadow: 2pt 2pt #788dd2;
-    transition: all 0.3s;
 }
 body.dark .main_title{
     color: #788dd2;
@@ -37,13 +36,11 @@ body.dark .main_title{
     width: 400px;
     height: 200px;
     border: 2px solid var(--text-clr);
-    transition: all 0.3s;
 }
 .content .contents span{
     text-align: center;
     color: #000;
     margin: 10px;
-    transition: all 0.3s;
 }
 .content .contents span.title{
     font-size: 22px;

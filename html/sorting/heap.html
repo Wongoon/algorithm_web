@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sorting Visualizer Web</title>
+    <link rel="icon" href="../../images/icon.svg">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/sorting.css">
+</head>
+
+<body class="">
+    <header>
+        <ul class="nav">
+            <li><a href="../../index.html">홈</a></li>
+            <li id="sub"><a href="../../index.html" class="dontmove">정렬</a>
+                <ul class="nav_in up">
+                    <li><a href="selection.html">단순 선택 정렬</a></li>
+                    <li><a href="insertion.html">단순 삽입 정렬</a></li>
+                    <li><a href="bubble.html">버블 정렬</a></li>
+                    <li><a href="shell.html">셸 정렬</a></li>
+                    <li><a href="quick.html">퀵 정렬</a></li>
+                    <li><a href="heap.html">힙 정렬</a></li>
+                    <li><a href="merge.html">합병 정렬</a></li>
+                    <li><a href="count.html">카운트 정렬</a></li>
+                    <li><a href="radix.html">기수 정렬</a></li>
+                </ul>
+            </li>
+            <li><a href="../compare.html">비교</a></li>
+            <li><a href="../code.html">코드</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <div class="canvas"></div>
+        <div class="control">
+            <div class="value_control">
+                <input type="range" name="speed" id="speed" min=0.5 max=8.0 step=0.5 value=4.0 onmousemove="rangeSlider(this.value)" onchange="rangeSlider(this.value)">
+                <span id="rangeValue"></span>
+                <div class="dropdown">
+                    <input type="text" class="text" id="size" readonly value="50">
+                    <div class="option">
+                        <div>10</div>
+                        <div>25</div>
+                        <div>50</div>
+                        <div>75</div>
+                        <div>100</div>
+                    </div>
+                </div>
+            </div>
+            <div class="btnlist">
+                <span class="btn" id="random">Random Array</span>
+                <span class="btn" id="play">Play</span>
+                <span class="btn btn_invisible" id="pause">Pause</span>
+                <span class="btn" id="reset">Reset</span>
+            </div>
+        </div>
+        <div class="contents">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+            <div class="discribe"></div>
+        </div>
+    </div>
+    <footer class="up">
+        <div class="bt_submenu">
+            <ul class="bt_nav">
+                <li><a href="../../index.html">홈</a></li>
+                <li id="bt_sub"><span>정렬</span>
+                    <ul class="bt_nav_in up">
+                        <li><a href="selection.html">단순 선택 정렬</a></li>
+                        <li><a href="insertion.html">단순 삽입 정렬</a></li>
+                        <li><a href="bubble.html">버블 정렬</a></li>
+                        <li><a href="shell.html">셸 정렬</a></li>
+                        <li><a href="quick.html">퀵 정렬</a></li>
+                        <li><a href="heap.html">힙 정렬</a></li>
+                        <li><a href="merge.html">합병 정렬</a></li>
+                        <li><a href="count.html">카운트 정렬</a></li>
+                        <li><a href="raidx.html">기수 정렬</a></li>
+                    </ul>
+                </li>
+                <li><a href="../compare.html">비교</a></li>
+                <li><a href="../code.html">코드</a></li>
+            </ul>
+        </div>
+        <div class="footer_bt">
+            <div class="copyright">
+                <h5>COPYRIGHT © by WEB DESIGN ALL RIGHTS RESERVED</h5>
+            </div>
+            <div class="darkmode">
+                <div id="btn">
+                    <i class="indicator"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../../js/main.js" type="text/javascript"></script>
+    <script src="../../js/heap.js" type="text/javascript"></script>
+    <script src="../../js/sorting.js" type="text/javascript"></script>
+</body>
+</html>
