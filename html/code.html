@@ -7,6 +7,10 @@
     <link rel="icon" href="../images/icon.svg">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/code.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/tomorrow-night-bright.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body class="">
@@ -49,45 +53,39 @@
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-                        <pre class="code" style="--h: 480px;">
-<span class="magenta">function</span> <span class="blue">selectionSort</span><span class="yellow">() {</span>
-    minIndex <span class="cyan">=</span> currentIndex;
-    <span class="magenta">for (let</span> i <span class="cyan">=</span> currentIndex <span class="cyan">+</span> <span class="orange">1</span>; i <span class="cyan"><</span> arr.<span class="red">length</span>; i</span><span class="cyan">++</span><span class="magenta">) {</span>
-        <span class="magenta">if</span> <span class="blue">(</span>arr<span class="yellow">[</span>i<span class="yellow">]</span> <span class="cyan"><</span> arr<span class="yellow">[</span>minIndex<span class="yellow">]</span><span class="blue">) {</span>
-            minIndex <span class="cyan">=</span> i;
-        <span class="blue">}</span>
-    <span class="magenta">}</span>
-    <span class="blue">swapBars</span><span class="magenta">(</span>currentIndex, minIndex<span class="magenta">)</span>;
-    currentIndex<span class="cyan">++</span>;
-<span class="yellow">}</span>
-
-<span class="magenta">function</span> <span class="blue">swapBars</span><span class="yellow">(</span>idx1, idx2<span class="yellow">) {</span>
-    <span class="magenta">const</span> <span class="orange">temp</span> <span class="cyan">=</span> arr<span class="magenta">[</span>idx1<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx1<span class="magenta">]</span> <span class="cyan">=</span> arr<span class="magenta">[</span>idx2<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx2<span class="magenta">]</span> <span class="cyan">=</span> temp;
-<span class="yellow">}</span>
+<pre style="--h: px;">
+<code class="language-javascript">
+async function selection(){
+    const ele = document.querySelectorAll(".bar");
+    for(let i = 0; i < ele.length; i++){
+        let min_index = i;
+        for(let j = i+1; j < ele.length; j++){
+            if(parseInt(ele[j].style.height) < parseInt(ele[min_index].style.height)){
+                min_index = j;
+            }
+        }
+        swap(ele[min_index], ele[i]);
+    }
+}
+</code>
 </pre>
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-                        <pre class="code" style="--h: 480px;">
-<span class="magenta">void</span> <span class="blue">selectionSort</span><span class="yellow">(int</span><span class="magenta">[]</span> arr, <span class="magenta">int</span> n<span class="yellow">) {</span>
-    <span class="magenta">for (int</span> <span class="red">i</span> <span class="magenta">=</span> <span class="orange">0</span>; i <span class="magenta"><</span> n <span class="magenta">-</span> <span class="orange">1</span>; i<span class="magenta">++) {</span>
-        <span class="magenta">int</span> <span class="red">min</span> <span class="magenta">=</span> i;
-        <span class="magenta">for</span><span class="blue">(</span><span class="magenta">int</span> <span class="red">j</span> <span class="magenta">=</span> i <span class="magenta">+</span> <span class="orange">1</span>; j <span class="magenta"><</span> n ; j<span class="magenta">++</span><span class="blue">) {</span>
-            <span class="magenta">if</span><span class="yellow">(</span>arr<span class="magenta">[</span>j<span class="magenta">] <</span> arr<span class="magenta">[</span>min<span class="magenta">]</span><span class="yellow">) {</span>
-                min <span class="magenta">=</span> j;
-            <span class="yellow">}</span>
-        <span class="blue">}</span>
-        <span class="blue">swap(</span>arr, i, min<span class="blue">)</span>;
-    <span class="magenta">}</span>
-<span class="yellow">}</span>
-
-<span class="magenta">void</span> <span class="blue">swap</span><span class="yellow">(int</span><span class="magenta">[]</span> arr, <span class="magenta">int</span> idx1, <span class="magenta">int</span> idx2<span class="yellow">) {</span>
-    <span class="magenta">int</span> <span class="red">num</span> <span class="magenta">=</span> arr<span class="magenta">[</span>idx1<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx1<span class="magenta">] =</span> arr<span class="magenta">[</span>idx2<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx2<span class="magenta">] =</span> num;
-<span class="yellow">}</span>
+<pre style="--h: px;">
+<code class="language-javascript">
+void selectionSort(int[] a, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j < n; j++){
+            if (a[j] < a[min]){
+                min = j;
+            }
+        }
+        swap(a, i, min);
+    }
+}
+</code>
 </pre>
                     </div>
                 </div>
@@ -98,7 +96,9 @@
                         <div class="worst">최악의 경우 (Worst) : <span class="value">O(n<sup>2</sup>)</span></div>
                     </div>
                     <div class="description">
-                        Selection Sort는 해당 순서에 원소를 넣을 위치는 이미 정해져 있고, 어떤 원소를 넣을지 선택하는 알고리즘이다. Selection Sort와 Insertion Sort를 헷갈려하는 사람들이 종종 있는데, Selection Sort는 배열에서 해당 자리를 선택하고 그 자리에 오는 값을 찾는 것이라고 생각하면 편하다. 선택 정렬의 과정으로는 먼저 주어진 배열에서 최솟값을 찾아 그 값을 맨 앞에 위치한 값과 교체한다. 그 다음 맨 처음 위치를
+                        Selection Sort는 해당 순서에 원소를 넣을 위치는 이미 정해져 있고, 어떤 원소를 넣을지 선택하는 알고리즘이다. Selection Sort와 Insertion
+                        Sort를 헷갈려하는 사람들이 종종 있는데, Selection Sort는 배열에서 해당 자리를 선택하고 그 자리에 오는 값을 찾는 것이라고 생각하면 편하다. 선택 정렬의
+                        과정으로는 먼저 주어진 배열에서 최솟값을 찾아 그 값을 맨 앞에 위치한 값과 교체한다. 그 다음 맨 처음 위치를
                         뺀 나머지 리스트를 앞과 같은 방법으로 교체한다. 하나의 원소만 남을 때까지 이를 반복한다.
                     </div>
                 </div>
@@ -108,37 +108,38 @@
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-                        <pre class="code" style="--h: 480px;">
-<span class="magenta">function</span> <span class="blue">insertionSort</span><span class="yellow">() {</span>
-    <span class="magenta">const</span> <span class="orange">currentVal</span> <span class="cyan">=</span> arr<span class="magenta">[</span>currentIndex<span class="magenta">]</span>;
-    <span class="magenta">let</span> j <span class="cyan">=</span> currentIndex <span class="cyan">-</span> <span class="orange">1</span>;
-    <span class="magenta">while (</span>j <span class="cyan">>=</span> <span class="orange">0</span> <span class="cyan">&&</span> arr<span class="blue">[</span>j<span class="blue">]</span> <span class="cyan">></span> currentVal<span class="magenta">) {</span>
-        <span class="blue">swapBars(</span>j <span class="cyan">+</span> <span class="orange">1</span>, j);
-        j<span class="cyan">--</span>;
-    <span class="magenta">}</span>
-    arr<span class="magenta">[</span>j <span class="cyan">+</span> <span class="orange">1</span><span class="magenta">]</span> <span class="cyan">=</span> currentVal;
-    currentIndex<span class="cyan">++</span>;
-<span class="yellow">}</span>
+<pre style="--h: px;">
+<code class="language-javascript">
+async function insertion(){
+    const ele = document.querySelectorAll(".bar");
+    for(let i = 1; i < ele.length; i++){
+        let j = i - 1;
+        let key = ele[i].style.height;
 
-<span class="magenta">function</span> <span class="blue">swapBars</span><span class="yellow">(</span>idx1, idx2<span class="yellow">) {</span>
-    <span class="magenta">const</span> <span class="orange">temp</span> <span class="cyan">=</span> arr<span class="magenta">[</span>idx1<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx1<span class="magenta">]</span> <span class="cyan">=</span> arr<span class="magenta">[</span>idx2<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx2<span class="magenta">]</span> <span class="cyan">=</span> temp;
-<span class="yellow">}</span>
+        while(j >= 0 && (parseInt(ele[j].style.height) > parseInt(key))){
+            ele[j + 1].style.height = ele[j].style.height;
+            j--;
+        }
+        ele[j + 1].style.height = key;
+    }
+}
+</code>
 </pre>
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-                        <pre class="code" style="--h: 480px;">
-<span class="magenta">void</span> <span class="blue">insertionSort</span><span class="yellow">(int</span><span class="magenta">[]</span> a, <span class="magenta">int</span> n<span class="yellow">) {</span>
-    <span class="magenta">for(int</span> <span class="red">i</span> <span class="magenta">=</span> <span class="orange">1</span>; i <span class="magenta"><</span> n; i<span class="magenta">++) {</span>
-        <span class="magenta">int</span> <span class="red">j</span>;
-        <span class="magenta">int</span> <span class="red">tmp</span> <span class="magenta">=</span> a<span class="blue">[</span>i<span class="blue">]</span>;
-        <span class="magenta">for</span><span class="blue">(</span>j <span class="magenta">=</span> i; j <span class="magenta">></span> 0 <span class="magenta">&&</span> a<span class="yellow">[</span>j <span class="magenta">-</span> <span class="orange">1</span><span class="yellow">]</span> <span class="magenta">></span> tmp; j<span class="magenta">--</span><span class="blue">)</span>
-            a<span class="blue">[</span>j<span class="blue">]</span> <span class="magenta">=</span> a<span class="blue">[</span>j <span class="magenta">-</span> <span class="orange">1</span><span class="blue">]</span>;
-        a<span class="blue">[</span>j<span class="blue">]</span> <span class="magenta">=</span> tmp;
-    <span class="magenta">}</span>
-<span class="yellow">}</span>
+<pre style="--h: px;">
+<code class="language-javascript">
+void insertionSort(int[] a, int n) {
+	for(int i = 1; i < n; i++) {
+		int j;
+		int tmp = a[i];
+		for(j = i; j > 0 && a[j-1] > tmp; j--)
+			a[j] = a[j-1];
+		a[j] = tmp;
+	}
+}
+</code>
 </pre>
                     </div>
                 </div>
@@ -149,7 +150,8 @@
                         <div class="worst">최악의 경우 (Worst) : <span class="value">O(n<sup>2</sup>)</span></div>
                     </div>
                     <div class="description">
-                        Insertion Sort는 자료 배열의 모든 요소를 앞에서부터 차례대로 이미 정렬된 배열 부분과 비교 하여, 자신의 위치를 찾아 삽입함으로써 정렬을 완성하는 알고리즘이다. 두 번째 값부터 시작하여 그 앞(왼쪽)의 값들과 비교하여 삽입할 위치를 지정한 후 값을 뒤로 옮기고 지정한 자리에 값을 삽입하여 정렬하는 알고리즘이다.
+                        Insertion Sort는 자료 배열의 모든 요소를 앞에서부터 차례대로 이미 정렬된 배열 부분과 비교 하여, 자신의 위치를 찾아 삽입함으로써 정렬을 완성하는 알고리즘이다.
+                        두 번째 값부터 시작하여 그 앞(왼쪽)의 값들과 비교하여 삽입할 위치를 지정한 후 값을 뒤로 옮기고 지정한 자리에 값을 삽입하여 정렬하는 알고리즘이다.
                     </div>
                 </div>
             </div>
@@ -158,45 +160,39 @@
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-                        <pre class="code" style="--h: 520px;">
-<span class="magenta">function</span> <span class="blue">bubbleSort</span><span class="yellow">() {</span>
-    <span class="magenta">for (let</span> i <span class="cyan">=</span> <span class="orange">0</span>; i <span class="cyan"><</span> arr.<span class="red">length</span> <span class="cyan">-</span> currentIndex - <span class="orange">1</span>; i<span class="cyan">++</span><span class="magenta">) {</span>
-        <span class="magenta">if</span> <span class="blue">(</span>arr<span class="yellow">[</span>i<span class="yellow">]</span> <span class="cyan">></span> arr<span class="yellow">[</span>i <span class="cyan">+</span> <span class="orange">1</span><span class="yellow">]</span><span class="blue">) {</span>
-            <span class="blue">swapBars</span><span class="yellow">(</span>i, i <span class="cyan">+</span> <span class="orange">1</span><span class="yellow">)</span>;
-        <span class="blue">}</span>
-    <span class="magenta">}</span>
-    currentIndex<span class="cyan">++</span>;
+<pre style="--h: px;">
+<code class="language-javascript">
+async function bubble() {
+    const ele = document.querySelectorAll(".bar");
+    for(let i = 0; i < ele.length - 1; i++){
+        for(let j = 0; j < ele.length - i - 1; j++){
+            if(parseInt(ele[j].style.height) > parseInt(ele[j + 1].style.height)){
+                swap(ele[j], ele[j + 1]);
+            }
+        }
+    }
 }
-
-<span class="magenta">function</span> <span class="blue">swapBars</span><span class="yellow">(</span>idx1, idx2<span class="yellow">) {</span>
-    <span class="magenta">const</span> <span class="orange">temp</span> <span class="cyan">=</span> arr<span class="magenta">[</span>idx1<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx1<span class="magenta">]</span> <span class="cyan">=</span> arr<span class="magenta">[</span>idx2<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx2<span class="magenta">]</span> <span class="cyan">=</span> temp;
-<span class="yellow">}</span>
+</code>
 </pre>
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-                        <pre class="code" style="--h: 520px;">
-<span class="magenta">void</span> <span class="blue">bubbleSort</span><span class="yellow">(int</span><span class="magenta">[]</span> a, <span class="magenta">int</span> n<span class="yellow">) {</span>
-    <span class="magenta">int</span> <span class="red">k</span> <span class="magenta">=</span> <span class="orange">0</span>;
-    <span class="magenta">while(</span>k <span class="magenta"><</span> n <span class="magenta">-</span> <span class="orange">1</span><span class="magenta">) {</span>
-        <span class="magenta">int</span> <span class="red">last</span> <span class="magenta">=</span> n <span class="magenta">-</span> <span class="orange">1</span>;
-        <span class="magenta">for</span><span class="blue">(</span><span class="magenta">int</span> <span class="red">j</span> <span class="magenta">=</span> n <span class="magenta">-</span> <span class="orange">1</span>; j <span class="magenta">></span> k; j<span class="magenta">--</span><span class="blue">) {</span>
-            <span class="magenta">if</span><span class="yellow">(</span>a<span class="magenta">[</span>j <span class="magenta">-</span> <span class="orange">1</span><span class="magenta">] ></span> a<span class="magenta">[</span>j<span class="magenta">]</span><span class="yellow">) {</span>
-                <span class="blue">swap</span><span class="magenta">(</span>a, j <span class="magenta">-</span> <span class="orange">1</span>, j<span class="magenta">)</span>;
-                last <span class="magenta">=</span> j;
-            <span class="yellow">}</span>
-        <span class="blue">}</span>
-        k <span class="magenta">=</span> last;
-    <span class="magenta">}</span>
-<span class="yellow">}</span>
-
-<span class="magenta">void</span> <span class="blue">swap</span><span class="yellow">(int</span><span class="magenta">[]</span> arr, <span class="magenta">int</span> idx1, <span class="magenta">int</span> idx2<span class="yellow">) {</span>
-    <span class="magenta">int</span> <span class="red">num</span> <span class="magenta">=</span> arr<span class="magenta">[</span>idx1<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx1<span class="magenta">] =</span> arr<span class="magenta">[</span>idx2<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx2<span class="magenta">] =</span> num;
-<span class="yellow">}</span>
+<pre style="--h: px;">
+<code class="language-javascript">
+void bubbleSort(int[] a, int n) {
+	int k = 0;
+	while(k < n-1) {
+		int last = n-1;
+		for(int j = n-1; j > k; j--) {
+			if(a[j-1] > a[j]) {
+				swap(a, j-1, j);
+				last = j;
+			}
+		}
+		k=last;
+	}
+}
+</code>
 </pre>
                     </div>
                 </div>
@@ -207,7 +203,8 @@
                         <div class="worst">최악의 경우 (Worst) : <span class="value">O(n<sup>2</sup>)</span></div>
                     </div>
                     <div class="description">
-                        Bubble Sort는 서로 인접한 두 원소를 검사하여 정렬하는 알고리즘이다. 인접한 2개의 값을 비교하여 크기가 순서대로 되어 있지 않으면, 즉 두 값 중 작은 값이 큰 값보다 오른쪽에 위치 해 있으면 서로 교환한다. 일반적으로 값의 교환 작업이 값의 이동 작업보다 더 복잡하기 때문에 버블 정렬은 단순성에도 불구하고 거의 쓰이지 않는다.
+                        Bubble Sort는 서로 인접한 두 원소를 검사하여 정렬하는 알고리즘이다. 인접한 2개의 값을 비교하여 크기가 순서대로 되어 있지 않으면, 즉 두 값 중 작은 값이 큰
+                        값보다 오른쪽에 위치 해 있으면 서로 교환한다. 일반적으로 값의 교환 작업이 값의 이동 작업보다 더 복잡하기 때문에 버블 정렬은 단순성에도 불구하고 거의 쓰이지 않는다.
                     </div>
                 </div>
             </div>
@@ -216,45 +213,47 @@
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-                        <pre class="code" style="--h: 580px;">
-<span class="magenta">function</span> <span class="blue">shellSort</span><span class="yellow">() {</span>
-    <span class="magenta">let</span> gap <span class="cyan">=</span> Math.<span class="blue">floor</span><span class="magenta">(</span>arr.<span class="red">length</span> <span class="cyan">/</span> <span class="orange">2</span><span class="magenta">)</span>;
-    <span class="magenta">while (</span>gap <span class="cyan">></span> <span class="orange">0</span><span class="magenta">) {</span>
-        <span class="magenta">for</span> <span class="blue">(</span><span class="magenta">let</span> i <span class="cyan">=</span> gap; i <span class="cyan"><</span> arr.<span class="red">length</span>; i<span class="cyan">++</span><span class="blue">) {</span>
-            <span class="magenta">let</span> temp <span class="cyan">=</span> arr<span class="yellow">[</span>i<span class="yellow">]</span>;
-            <span class="magenta">let</span> j <span class="cyan">=</span> i;
-            <span class="magenta">while</span> <span class="yellow">(</span>j <span class="cyan">>=</span> gap <span class="cyan">&&</span> arr<span class="magenta">[</span>j <span class="cyan">-</span> gap<span class="magenta">]</span> <span class="cyan">></span> temp<span class="yellow">) {</span>
-                <span class="blue">swapBars</span><span class="magenta">(</span>j, j <span class="cyan">-</span> gap<span class="magenta">)</span>;
-                j <span class="cyan">-=</span> gap;
-            <span class="yellow">}</span>
-            arr<span class="yellow">[</span>j<span class="yellow">]</span> <span class="cyan">=</span> temp;
-        <span class="blue">}</span>
-        gap <span class="cyan">=</span> Math.<span class="blue">floor(</span>gap <span class="cyan">/</span> <span class="orange">2</span><span class="blue">)</span>;
-    <span class="magenta">}</span>
-<span class="yellow">}</span>
+<pre style="--h: px;">
+<code class="language-javascript">
+async function shellSort() {
+    const elements = document.querySelectorAll('.bar');
+    const n = elements.length;
+    let gap = Math.floor(n / 2);
 
-<span class="magenta">function</span> <span class="blue">swapBars</span><span class="yellow">(</span>idx1, idx2<span class="yellow">) {</span>
-    <span class="magenta">const</span> <span class="orange">temp</span> <span class="cyan">=</span> arr<span class="magenta">[</span>idx1<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx1<span class="magenta">]</span> <span class="cyan">=</span> arr<span class="magenta">[</span>idx2<span class="magenta">]</span>;
-    arr<span class="magenta">[</span>idx2<span class="magenta">]</span> <span class="cyan">=</span> temp;
-<span class="yellow">}</span>
+    while (gap > 0) {
+        for (let i = gap; i < n; i++) {
+            const current = elements[i];
+            const currentValue = parseInt(current.style.height);
+            let j = i;
+
+            while (j >= gap && parseInt(elements[j - gap].style.height) > currentValue) {
+                swap(elements[j], elements[j - gap]);
+
+                j -= gap;
+            }
+        }
+        gap = Math.floor(gap / 2);
+    }
+}
+</code>
 </pre>
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-                        <pre class="code" style="--h: 580px;">
-<span class="magenta">void</span> <span class="blue">shellSort</span><span class="yellow">(int</span><span class="magenta">[]</span> a, <span class="magenta">int</span> n<span class="yellow">) {</span>
-    <span class="magenta">for(int</span> <span class="red">h</span> <span class="magenta">=</span> n <span class="magenta">/</span> <span class="orange">2</span>; h <span class="magenta">></span> <span class="orange">0</span>; h <span class="magenta">/=</span> <span class="orange">2</span><span class="magenta">) {</span>
-        <span class="magenta">for</span><span class="blue">(</span><span class="magenta">int</span> <span class="red">i</span> <span class="magenta">=</span> h; i <span class="magenta"><</span> n; i<span class="magenta">++</span><span class="blue">) {</span>
-            <span class="magenta">int</span> <span class="red">j</span>;
-            <span class="magenta">int</span> <span class="red">tmp</span> <span class="magenta">=</span> a<span class="yellow">[</span>i<span class="yellow">]</span>;
-            <span class="magenta">for</span><span class="yellow">(</span>j <span class="magenta">=</span> i <span class="magenta">-</span> h; j <span class="magenta">>=</span> <span class="orange">0</span> <span class="magenta">&&</span> a<span class="magenta">[</span>j<span class="magenta">] ></span> tmp; j <span class="magenta">-=</span> h<span class="yellow">) {</span>
-                a<span class="magenta">[</span>j <span class="magenta">+</span> h<span class="magenta">] =</span> a<span class="magenta">[</span>j<span class="magenta">]</span>;
-            <span class="yellow">}</span>
-            a<span class="yellow">[</span>j <span class="magenta">+</span> h<span class="yellow">]</span> <span class="magenta">=</span> tmp;
-        <span class="blue">}</span>
-    <span class="magenta">}</span>
-<span class="yellow">}</span>
+<pre style="--h: px;">
+<code class="language-javascript">
+void shellSort(int[] a, int n) {
+    for(int h = n / 2; h > 0; h /= 2){
+        for(int i = h; i < n; i++) {
+            int j;
+            int tmp = a[i];
+            for(j = i - h; j >= 0 && a[j] > tmp; j -= h)
+                a[j + h] = a[j];
+            a[j + h] = tmp;
+        }
+    }
+}
+</code>
 </pre>
                     </div>
                 </div>
@@ -265,7 +264,9 @@
                         <div class="worst">최악의 경우 (Worst) : <span class="value">O(n<sup>2</sup>)</span></div>
                     </div>
                     <div class="description">
-                        Shell Sort는 Insertion Sort를 보완한 알고리즘으로, Insertion Sort의 최대 문제점인 전체의 리스트를 한 번에 정렬해 삽입되어야 할 위치가 현재 위치에서 상당히 멀리 떨어진 곳이라면 많은 이동을 해야만 제자리로 갈 수 있는 것인데, Shell Sort은 전체의 리스트를 한 번에 정렬하지 않고 일정 기준에 따라 분류 해 정렬하기 때문에 Insertion Sort보다 더 빠르게 정렬할 수 있다.
+                        Shell Sort는 Insertion Sort를 보완한 알고리즘으로, Insertion Sort의 최대 문제점인 전체의 리스트를 한 번에 정렬해 삽입되어야 할 위치가 현재
+                        위치에서 상당히 멀리 떨어진 곳이라면 많은 이동을 해야만 제자리로 갈 수 있는 것인데, Shell Sort은 전체의 리스트를 한 번에 정렬하지 않고 일정 기준에 따라 분류
+                        해 정렬하기 때문에 Insertion Sort보다 더 빠르게 정렬할 수 있다.
                     </div>
                 </div>
             </div>
@@ -274,12 +275,259 @@
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-                        <pre class="code" style="--h: 400px;">
+<pre style="--h: px;">
+<code class="language-javascript">
+async function partitionLomuto(ele, l, r){
+    let i = l - 1;
+    for(let j = l; j <= r - 1; j++){
+        if(parseInt(ele[j].style.height) < parseInt(ele[r].style.height)){
+            i++;
+            swap(ele[i], ele[j]);
+        }
+    }
+    i++;
+    swap(ele[i], ele[r]);
+
+    return i;
+}
+
+async function quickSort(ele, l, r){
+    if(l < r){
+        let pivot_index = await partitionLomuto(ele, l, r);
+        await quickSort(ele, l, pivot_index - 1);
+        await quickSort(ele, pivot_index + 1, r);
+    }
+}
+</code>
 </pre>
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-                        <pre class="code">
+<pre style="--h: px;">
+<code class="language-javascript">
+void quickSort(int[] a, int left, int right) {
+	int pl = left;
+	int pr = right;
+	int x = a[(pl + pr) / 2];
+
+	do {
+		while(a[pl] < x) pl++;
+		while(a[pr] > x) pr--;
+		if(pl <= pr) swap(a, pl++, pr--);
+	} while(pl <= pr);
+		
+	if(left < pr) quickSort(a, left, pr);
+	if(right > pl) quickSort(a, pl, right);
+}
+</code>
+</pre>
+                    </div>
+                </div>
+                <div class="describe">
+                    <div class="bigO">
+                        <div class="best">최선의 경우 (Best) : O()</div>
+                        <div class="average">평균 (Average) : O()</div>
+                        <div class="worst">최악의 경우 (Worst) : O()</div>
+                    </div>
+                    <div class="description">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="heap" class="contents">
+                <div class="codes">
+                    <div class="js">
+                        <div class="title">Javascript</div>
+<pre style="--h: px;">
+<code class="language-javascript">
+async function heapSort(arr, n) {
+    for (var i = n / 2 - 1; i >= 0; i--) {
+        await heapify(arr, n, i);
+    }
+
+    for (var i = n - 1; i > 0; i--) {
+        var temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+        swap(arr[0], arr[i]);
+
+        await heapify(arr, i, 0);
+    }
+}
+
+async function heapify(arr, n, i) {
+    var largest = i;
+    var l = 2 * i + 1;
+    var r = 2 * i + 2;
+
+    if (l < n && parseInt(arr[l].style.height) > parseInt(arr[largest].style.height)) {
+        largest = l;
+        swap(arr[largest], arr[l]);
+    }
+
+    if (r < n && parseInt(arr[r].style.height) > parseInt(arr[largest].style.height)) { 
+        largest = r;
+        swap(arr[largest], arr[r]);
+    }
+
+    if (largest != i) {
+        var temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+        swap(arr[i], arr[largest]);
+
+        heapify(arr, n, largest);
+    }
+}
+</code>
+</pre>
+                    </div>
+                    <div class="java">
+                        <div class="title">Java</div>
+<pre style="--h: px;">
+<code class="language-javascript">
+
+</code>
+</pre>
+                    </div>
+                </div>
+                <div class="describe">
+                    <div class="bigO">
+                        <div class="best">최선의 경우 (Best) : O()</div>
+                        <div class="average">평균 (Average) : O()</div>
+                        <div class="worst">최악의 경우 (Worst) : O()</div>
+                    </div>
+                    <div class="description">
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="merge" class="contents">
+                <div class="codes">
+                    <div class="js">
+                        <div class="title">Javascript</div>
+<pre style="--h: px;">
+<code class="language-javascript">
+async function merge(ele, low, mid, high){
+    const n1 = mid - low + 1;
+    const n2 = high - mid;
+    let left = new Array(n1);
+    let right = new Array(n2);
+
+    for(let i = 0; i < n1; i++){
+        left[i] = ele[low + i].style.height;
+    }
+    for(let i = 0; i < n2; i++){
+        right[i] = ele[mid + 1 + i].style.height;
+    }
+    let i = 0, j = 0, k = low;
+    while(i < n1 && j < n2){
+        if(parseInt(left[i]) <= parseInt(right[j])){
+            ele[k].style.height = left[i];
+            i++;
+            k++;
+        }
+        else{
+            ele[k].style.height = right[j];
+            j++;
+            k++;
+        }
+    }
+    while(i < n1){
+        ele[k].style.height = left[i];
+        i++;
+        k++;
+    }
+    while(j < n2){
+        ele[k].style.height = right[j];
+        j++;
+        k++;
+    }
+}
+
+async function mergeSort(ele, l, r){
+    if(l >= r){
+        return;
+    }
+    const m = l + Math.floor((r - l) / 2);
+    await mergeSort(ele, l, m);
+    await mergeSort(ele, m + 1, r);
+    await merge(ele, l, m, r);
+}
+</code>
+</pre>
+                    </div>
+                    <div class="java">
+                        <div class="title">Java</div>
+<pre style="--h: px;">
+<code class="language-javascript">
+
+</code>
+</pre>
+                    </div>
+                </div>
+                <div class="describe">
+                    <div class="bigO">
+                        <div class="best">최선의 경우 (Best) : O()</div>
+                        <div class="average">평균 (Average) : O()</div>
+                        <div class="worst">최악의 경우 (Worst) : O()</div>
+                    </div>
+                    <div class="description">
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="count" class="contents">
+                <div class="codes">
+                    <div class="js">
+                        <div class="title">Javascript</div>
+<pre style="--h: px;">
+<code class="language-javascript">
+
+</code>
+</pre>
+                    </div>
+                    <div class="java">
+                        <div class="title">Java</div>
+<pre style="--h: px;">
+<code class="language-javascript">
+
+</code>
+</pre>
+                    </div>
+                </div>
+                <div class="describe">
+                    <div class="bigO">
+                        <div class="best">최선의 경우 (Best) : O()</div>
+                        <div class="average">평균 (Average) : O()</div>
+                        <div class="worst">최악의 경우 (Worst) : O()</div>
+                    </div>
+                    <div class="description">
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="radix" class="contents">
+                <div class="codes">
+                    <div class="js">
+                        <div class="title">Javascript</div>
+<pre style="--h: px;">
+<code class="language-javascript">
+
+</code>
+</pre>
+                    </div>
+                    <div class="java">
+                        <div class="title">Java</div>
+<pre style="--h: px;">
+<code class="language-javascript">
+
+</code>
 </pre>
                     </div>
                 </div>
@@ -296,141 +544,40 @@
             </div>
         </div>
 
-        <div id="heap" class="contents">
-            <div class="codes">
-                <div class="js">
-                    <div class="title">Javascript</div>
-                    <pre class="code" style="--h: 400px;">
-</pre>
+        <footer class="up">
+            <div class="bt_submenu">
+                <ul class="bt_nav">
+                    <li><a href="../index.html">홈</a></li>
+                    <li id="bt_sub"><span>정렬</span>
+                        <ul class="bt_nav_in up">
+                            <li><a href="sorting/selection.html">단순 선택 정렬</a></li>
+                            <li><a href="sorting/insertion.html">단순 삽입 정렬</a></li>
+                            <li><a href="sorting/bubble.html">버블 정렬</a></li>
+                            <li><a href="sorting/shell.html">셸 정렬</a></li>
+                            <li><a href="sorting/quick.html">퀵 정렬</a></li>
+                            <li><a href="sorting/heap.html">힙 정렬</a></li>
+                            <li><a href="sorting/merge.html">합병 정렬</a></li>
+                            <li><a href="sorting/count.html">카운트 정렬</a></li>
+                            <li><a href="sorting/raidx.html">기수 정렬</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="compare.html">비교</a></li>
+                    <li><a href="code.html">코드</a></li>
+                </ul>
+            </div>
+            <div class="footer_bt">
+                <div class="copyright">
+                    <h5>COPYRIGHT © by WEB DESIGN ALL RIGHTS RESERVED</h5>
                 </div>
-                <div class="java">
-                    <div class="title">Java</div>
-                    <pre class="code">
-</pre>
+                <div class="darkmode">
+                    <div id="btn">
+                        <i class="indicator"></i>
+                    </div>
                 </div>
             </div>
-            <div class="describe">
-                <div class="bigO">
-                    <div class="best">최선의 경우 (Best) : O()</div>
-                    <div class="average">평균 (Average) : O()</div>
-                    <div class="worst">최악의 경우 (Worst) : O()</div>
-                </div>
-                <div class="description">
-
-                </div>
-            </div>
-        </div>
-
-        <div id="merge" class="contents">
-            <div class="codes">
-                <div class="js">
-                    <div class="title">Javascript</div>
-                    <pre class="code" style="--h: 400px;">
-</pre>
-                </div>
-                <div class="java">
-                    <div class="title">Java</div>
-                    <pre class="code">
-</pre>
-                </div>
-            </div>
-            <div class="describe">
-                <div class="bigO">
-                    <div class="best">최선의 경우 (Best) : O()</div>
-                    <div class="average">평균 (Average) : O()</div>
-                    <div class="worst">최악의 경우 (Worst) : O()</div>
-                </div>
-                <div class="description">
-
-                </div>
-            </div>
-        </div>
-
-        <div id="count" class="contents">
-            <div class="codes">
-                <div class="js">
-                    <div class="title">Javascript</div>
-                    <pre class="code" style="--h: 400px;">
-</pre>
-                </div>
-                <div class="java">
-                    <div class="title">Java</div>
-                    <pre class="code">
-</pre>
-                </div>
-            </div>
-            <div class="describe">
-                <div class="bigO">
-                    <div class="best">최선의 경우 (Best) : O()</div>
-                    <div class="average">평균 (Average) : O()</div>
-                    <div class="worst">최악의 경우 (Worst) : O()</div>
-                </div>
-                <div class="description">
-
-                </div>
-            </div>
-        </div>
-
-        <div id="radix" class="contents">
-            <div class="codes">
-                <div class="js">
-                    <div class="title">Javascript</div>
-                    <pre class="code" style="--h: 400px;">
-</pre>
-                </div>
-                <div class="java">
-                    <div class="title">Java</div>
-                    <pre class="code">
-</pre>
-                </div>
-            </div>
-            <div class="describe">
-                <div class="bigO">
-                    <div class="best">최선의 경우 (Best) : O()</div>
-                    <div class="average">평균 (Average) : O()</div>
-                    <div class="worst">최악의 경우 (Worst) : O()</div>
-                </div>
-                <div class="description">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="up">
-        <div class="bt_submenu">
-            <ul class="bt_nav">
-                <li><a href="../index.html">홈</a></li>
-                <li id="bt_sub"><span>정렬</span>
-                    <ul class="bt_nav_in up">
-                        <li><a href="sorting/selection.html">단순 선택 정렬</a></li>
-                        <li><a href="sorting/insertion.html">단순 삽입 정렬</a></li>
-                        <li><a href="sorting/bubble.html">버블 정렬</a></li>
-                        <li><a href="sorting/shell.html">셸 정렬</a></li>
-                        <li><a href="sorting/quick.html">퀵 정렬</a></li>
-                        <li><a href="sorting/heap.html">힙 정렬</a></li>
-                        <li><a href="sorting/merge.html">합병 정렬</a></li>
-                        <li><a href="sorting/count.html">카운트 정렬</a></li>
-                        <li><a href="sorting/raidx.html">기수 정렬</a></li>
-                    </ul>
-                </li>
-                <li><a href="compare.html">비교</a></li>
-                <li><a href="code.html">코드</a></li>
-            </ul>
-        </div>
-        <div class="footer_bt">
-            <div class="copyright">
-                <h5>COPYRIGHT © by WEB DESIGN ALL RIGHTS RESERVED</h5>
-            </div>
-            <div class="darkmode">
-                <div id="btn">
-                    <i class="indicator"></i>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="../js/main.js" type="text/javascript"></script>
-    <script src="../js/code.js" type="text/javascript"></script>
+        </footer>
+        <script src="../js/main.js" type="text/javascript"></script>
+        <script src="../js/code.js" type="text/javascript"></script>
 </body>
 
 </html>

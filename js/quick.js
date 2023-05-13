@@ -57,7 +57,7 @@ async function quickSort(ele, l, r){
         await quickSort(ele, pivot_index + 1, r);
     }
     else{
-        if(l >= 0 && r >= 0 && l <ele.length && r <ele.length){
+        if(l >= 0 && r >= 0 && l < ele.length && r < ele.length){
             ele[r].style.background = 'green';
             ele[l].style.background = 'green';
         }

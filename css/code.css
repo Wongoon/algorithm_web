@@ -55,41 +55,22 @@ ul.tabmenu li.tablink.current{
     border-bottom: none;
     color: var(--black);
 }
-.contents .codes .code{
-    padding: 10px;
+.contents .codes pre{
+    padding: 0 10px;
     width: 100%;
-    font-size: 20px;
     border: 1px solid var(--black);
-    background: #282c34;
+    background: #000;
     line-height: 1.3em;
     height: var(--h);
 }
-.contents .codes .code,
-.contents .codes .code span{
-    font-family: Consolas;
+.contents .codes pre,
+.contents .codes pre code,
+.contents .codes pre code span{
     user-select: text;
-    color: #afbcc6;
 }
-.contents .codes .code span.magenta{
-    color: #c678dc;
-}
-.contents .codes .code span.blue{
-    color: #4d94cd;
-}
-.contents .codes .code span.yellow{
-    color: #e4bf1c;
-}
-.contents .codes .code span.red{
-    color: #c96a68;
-}
-.contents .codes .code span.cyan{
-    color: #56b6c2;
-}
-.contents .codes .code span.green{
-    color: #98c379;
-}
-.contents .codes .code span.orange{
-    color: #d39b61;
+.contents .codes pre code{
+    padding: 0;
+    overflow: hidden;
 }
 .contents .describe{
     display: flex;
