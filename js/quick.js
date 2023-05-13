@@ -1,169 +1,85 @@
-let arr = [];
-let original_arr = [];
-let bars = [];
-let currentIndex = 0;
-let minIndex = 0;
-let animationId = null;
-let animationPaused = true;
-
-let dropdownMenu = document.querySelector('.dropdown');
-let sizeRange = document.getElementById("size");
-let RandomBtn = document.getElementById("random");
-let speedRange = document.getElementById("speed");
-let speedText = document.getElementById("rangeValue");
-let start = document.getElementById('play');
-let pause = document.getElementById('pause');
-let reset = document.getElementById('reset');
-
-let size = parseInt(sizeRange.value);
-let speed = parseFloat(speedRange.value);
-let interval = 500 / speed;
-speedText.textContent = String(speed) + 'x';
-
-RandomBtn.addEventListener("click", function(){
-    generateArray(size);
-    pause.classList.add('btn_invisible');
-    start.classList.remove('btn_invisible');
-});
-
-dropdownMenu.addEventListener('click', function(){
-    size = parseInt(sizeRange.value);
-})
-
-function rangeSlider(value){
-    speedText.innerHTML = value + 'x';
-    speed = parseFloat(value);
-    interval = 250 / speed;
-}
-
-function generateArray(length) {
-    arr = [];
-    original_arr = [];
-    while (arr.length < length) {
-        let randNum = Math.floor(Math.random() * length) + 1;
-        if (arr.indexOf(randNum) === -1) {
-            arr.push(randNum);
-            original_arr.push(randNum);
+const quickSortbtn = document.querySelector("#play");
+async function partitionLomuto(ele, l, r){
+    let i = l - 1;
+    ele[r].style.background = 'cyan';
+    for(let j = l; j <= r - 1; j++){
+        if(hasPressedStop){
+            return;
         }
-    }
-    generateBars();
-    currentIndex = 0;
-    minIndex = 0;
-    pauseAnimation();
-}
-
-// Generate bars based on array values
-function generateBars() {
-    const canvas = document.querySelector('.canvas');
-    canvas.innerHTML = '';
-    bars = [];
-    for (let i = 0; i < arr.length; i++) {
-        const bar = document.createElement('div');
-        let height = 100 / size;
-        bar.classList.add('bar');
-        bar.style.width = 'calc(100% / ' + size + ')';
-        bar.style.height = arr[i] * height + '%';
-        canvas.appendChild(bar);
-        bars.push(bar);
-    }
-}
-
-// Swap two bars in the array
-function swapBars(index1, index2) {
-    const temp = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = temp;
-    const tempBarHeight = bars[index1].style.height;
-    bars[index1].style.height = bars[index2].style.height;
-    bars[index2].style.height = tempBarHeight;
-}
-
-// Quick sort algorithm
-function quickSort(lowIndex, highIndex) {
-    if (lowIndex < highIndex) {
-        let partitionIndex = partition(lowIndex, highIndex);
-        quickSort(lowIndex, partitionIndex - 1);
-        quickSort(partitionIndex + 1, highIndex);
-    }
-}
-  
-// Partition the array for quick sort
-function partition(lowIndex, highIndex) {
-    // Use the last element as the pivot
-    let pivot = arr[highIndex];
-    let i = lowIndex - 1;
-
-    for (let j = lowIndex; j < highIndex; j++) {
-        if (arr[j] < pivot) {
+        ele[j].style.background = 'yellow';
+        await delayTime(interval);
+        if(hasPressedStop){
+            return;
+        }
+        if(parseInt(ele[j].style.height) < parseInt(ele[r].style.height)){
             i++;
-            swapBars(i, j);
+            swap(ele[i], ele[j]);
+            ele[i].style.background = 'orange';
+            if(i != j) ele[j].style.background = 'orange';
+            await delayTime(interval);
+        }
+        else{
+            ele[j].style.background = 'pink';
         }
     }
+    i++; 
+    if(hasPressedStop){
+        return;
+    }
+    await delayTime(interval);
+    if(hasPressedStop){
+        return;
+    }
+    swap(ele[i], ele[r]);
+    ele[r].style.background = 'pink';
+    ele[i].style.background = 'green';
 
-    // Move the pivot to its final position
-    swapBars(i + 1, highIndex);
-    return i + 1;
-}
-  
-// Start animation
-function startAnimation() {
-    animationPaused = false;
-    if (animationId !== null) {
-        continueAnimation();
+    if(hasPressedStop){
+        return;
     }
-    else {
-        animationId = setInterval(() => {
-            quickSort(0, size - 1);
-        }, interval);
+    await delayTime(interval);
+    if(hasPressedStop){
+        return;
     }
-}
+    
+    for(let k = 0; k < ele.length; k++){
+        if(ele[k].style.background != 'green')
+            ele[k].style.background = '#695cfe';
+    }
 
-// Continue animation
-function continueAnimation() {
-    if (animationId === null) {
-        animationId = setInterval(() => {
-            quickSort(0, size - 1);
-        }, interval);
-    }
-}
-
-// Pause animation
-function pauseAnimation() {
-    if (animationId !== null) {
-        clearInterval(animationId);
-        animationId = null;
-        animationPaused = true;
-    }
+    return i;
 }
 
-// Reset animation
-function resetAnimation() {
-    for (let i = 0; i < size; i++) {
-        arr[i] = original_arr[i];
+async function quickSort(ele, l, r){
+    if(l < r){
+        let pivot_index = await partitionLomuto(ele, l, r);
+        await quickSort(ele, l, pivot_index - 1);
+        await quickSort(ele, pivot_index + 1, r);
     }
-    generateBars();
-    currentIndex = 0;
-    minIndex = 0;
-    pauseAnimation();
+    else{
+        if(l >= 0 && r >= 0 && l <ele.length && r <ele.length){
+            ele[r].style.background = 'green';
+            ele[l].style.background = 'green';
+        }
+    }
 }
 
-reset.addEventListener('click', function(){
-    pause.classList.add('btn_invisible');
-    start.classList.remove('btn_invisible');
-    resetAnimation();
+quickSortbtn.addEventListener('click', async function(){
+    let ele = document.querySelectorAll('.bar');
+    let l = 0;
+    let r = ele.length - 1;
+    hasPressedStop = false;
+    disableSortingBtn();
+    disableSizeSlider();
+    disableNewArrayBtn();
+    enableStopSortingBtn();
+    await quickSort(ele, l, r);
+    if(hasPressedStop){
+        disableSpeedSlider();
+    } else {
+        enableSortingBtn();
+        enableSizeSlider();
+    }
+    enableNewArrayBtn();
+    disableStopSortingBtn();
 });
-
-start.addEventListener('click', function(){
-    startAnimation();
-    start.classList.add('btn_invisible');
-    pause.classList.remove('btn_invisible');
-});
-
-pause.addEventListener('click', function(){
-    pause.classList.add('btn_invisible');
-    start.classList.remove('btn_invisible');
-    pauseAnimation();
-});
-
-// Initialize
-generateArray(size);

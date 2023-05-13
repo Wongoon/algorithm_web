@@ -11,7 +11,7 @@
     align-items: flex-end;
     height: 500px;
     margin-bottom: 20px;
-    background: #eee;
+    background: #e7e7e7;
     padding: 20px;
 }
 .bar{
@@ -34,9 +34,13 @@ button {
     width: 700px;
     height: 30px;
     position: relative;
-    left: 100px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.control .value_control div{
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 .control .value_control #rangeValue{
@@ -60,11 +64,11 @@ button {
     background-color: #33a3ee;
     color: #fff;
 }
-.control .value_control #speed {
+.control .value_control #speed{
     position: relative;
     width: 300px;
     height: 2px;
-    background-color: #333;
+    background: #333;
     -webkit-appearance: none;
     outline: none;
     border-radius: 2px;
@@ -76,7 +80,44 @@ button {
     border-radius: 50%;
     background-color: #33a3ee;
 }
+.control .value_control #size{
 
+}
+.control .value_control #sizeValue{
+    position: absolute;
+    top: 0;
+    right: -60px;
+    padding: 2px;
+    width: 50px;
+    background: #33a3ee;
+    color: #fff;
+    text-align: center;
+}
+.control .value_control #sizeValue::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    background: #33a3ee;
+}
+#size{
+    width: 300px;
+    height: 2px;
+    background: #333;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 2px;
+}
+#size::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #33a3ee;
+}
 .dropdown{
     position: relative;
     width: 300px;
@@ -170,6 +211,9 @@ button {
     text-transform: uppercase;
     color: #fff;
     border-radius: 5px;
+    font-size: 20px;
+    outline: none;
+    border: none;
     cursor: pointer;
     box-shadow: 0 0 20px rgba(105, 92, 254, 0.1);
     transition: box-shadow 0.2s;
