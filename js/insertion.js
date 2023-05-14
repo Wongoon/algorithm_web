@@ -8,7 +8,7 @@ async function insertion(){
         }
         let j = i - 1;
         let key = ele[i].style.height;
-        ele[i].style.background = 'blue';
+        ele[i].style.background = '#55ffff';
 
         await delayTime(interval);
         if(hasPressedStop){
@@ -19,7 +19,7 @@ async function insertion(){
             if(hasPressedStop){
                 return;
             }
-            ele[j].style.background = 'blue';
+            ele[j].style.background = '#55ffff';
             ele[j + 1].style.height = ele[j].style.height;
             j--;
 
