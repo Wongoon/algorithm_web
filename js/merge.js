@@ -34,7 +34,7 @@ async function merge(ele, low, mid, high){
                 ele[k].style.background = 'green';
             }
             else{
-                ele[k].style.background = '#44ff44';
+                ele[k].style.background = '#2a265f';
             }
             
             ele[k].style.height = left[i];
@@ -46,7 +46,7 @@ async function merge(ele, low, mid, high){
                 ele[k].style.background = 'green';
             }
             else{
-                ele[k].style.background = '#44ff44';
+                ele[k].style.background = '#2a265f';
             } 
             ele[k].style.height = right[j];
             j++;
@@ -62,7 +62,7 @@ async function merge(ele, low, mid, high){
             ele[k].style.background = 'green';
         }
         else{
-            ele[k].style.background = '#44ff44';
+            ele[k].style.background = '#2a265f';
         }
         ele[k].style.height = left[i];
         i++;
@@ -77,7 +77,7 @@ async function merge(ele, low, mid, high){
             ele[k].style.background = 'green';
         }
         else{
-            ele[k].style.background = '#44ff44';
+            ele[k].style.background = '#2a265f';
         }
         ele[k].style.height = right[j];
         j++;

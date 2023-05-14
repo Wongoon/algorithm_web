@@ -56,7 +56,7 @@ arraySize.innerHTML = size;
 
 arraySize.addEventListener('input', function(){
     size = parseInt(arraySize.value);
-    createNewArray(parseInt(arraySize.value));
+    createNewArray(size);
     document.getElementById('sizeValue').innerHTML = size;
 });
 
@@ -74,6 +74,7 @@ createNewArray(size);
 
 function createNewArray(length) {
     deleteChild();
+    disableStopSortingBtn();
 
     barArray = [];
     while (barArray.length < length) {
@@ -87,10 +88,9 @@ function createNewArray(length) {
 
     for (let i = 0; i < length; i++) {
         const bar = document.createElement("div");
-        let height = 100 / size;
+        let height = 100 / length;
         bar.style.height = barArray[i] * height + '%';
-        bar.style.width = 'calc(100% /' + size + ')';
-        bar.classList.add(i);
+        bar.style.width = 'calc(100% /' + length + ')';
         bar.classList.add('bar');
         bars.appendChild(bar);
     }

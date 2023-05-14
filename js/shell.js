@@ -48,6 +48,7 @@ async function shellSort() {
     }
     for(let i = 0; i < n; i++){
         elements[i].style.background = 'green';
+        await delayTime(interval / 8);
     }
 }
 
