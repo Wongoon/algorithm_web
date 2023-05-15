@@ -19,8 +19,8 @@ async function shellSort() {
                     return;
                 }
 
-                elements[j].style.background = 'cyan';
-                elements[j - gap].style.background = 'cyan';
+                elements[j].style.background = '#ffd54f';
+                elements[j - gap].style.background = '#ffd54f';
 
                 await delayTime(interval);
 
@@ -36,7 +36,7 @@ async function shellSort() {
                 j -= gap;
             }
 
-            elements[j].style.background = 'green';
+            elements[j].style.background = '#338a3e';
         }
 
         gap = Math.floor(gap / 2);
@@ -47,7 +47,7 @@ async function shellSort() {
         await delayTime(interval);
     }
     for(let i = 0; i < n; i++){
-        elements[i].style.background = 'green';
+        elements[i].style.background = '#338a3e';
         await delayTime(interval / 8);
     }
 }

@@ -1,7 +1,7 @@
 const quickSortbtn = document.querySelector("#play");
 async function partitionLomuto(ele, l, r){
     let i = l - 1;
-    ele[r].style.background = 'cyan';
+    ele[r].style.background = '#ffd54f';
     for(let j = l; j <= r - 1; j++){
         if(hasPressedStop){
             return;
@@ -32,7 +32,7 @@ async function partitionLomuto(ele, l, r){
     }
     swap(ele[i], ele[r]);
     ele[r].style.background = 'pink';
-    ele[i].style.background = 'green';
+    ele[i].style.background = '#338a3e';
 
     if(hasPressedStop){
         return;
@@ -43,7 +43,7 @@ async function partitionLomuto(ele, l, r){
     }
     
     for(let k = 0; k < ele.length; k++){
-        if(ele[k].style.background != 'green')
+        if(ele[k].style.background != '#338a3e')
             ele[k].style.background = '#695cfe';
     }
 
@@ -58,8 +58,8 @@ async function quickSort(ele, l, r){
     }
     else{
         if(l >= 0 && r >= 0 && l < ele.length && r < ele.length){
-            ele[r].style.background = 'green';
-            ele[l].style.background = 'green';
+            ele[r].style.background = '#338a3e';
+            ele[l].style.background = '#338a3e';
         }
     }
 }
@@ -74,6 +74,9 @@ quickSortbtn.addEventListener('click', async function(){
     disableNewArrayBtn();
     enableStopSortingBtn();
     await quickSort(ele, l, r);
+    for(let i = 0; i < ele.length; i++){
+        ele[i].style.background = '#338a3e';
+    }
     if(hasPressedStop){
         disableSpeedSlider();
     } else {

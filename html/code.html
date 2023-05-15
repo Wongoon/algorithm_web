@@ -26,7 +26,6 @@
                     <li><a href="sorting/quick.html">퀵 정렬</a></li>
                     <li><a href="sorting/heap.html">힙 정렬</a></li>
                     <li><a href="sorting/merge.html">합병 정렬</a></li>
-                    <li><a href="sorting/count.html">카운트 정렬</a></li>
                     <li><a href="sorting/radix.html">기수 정렬</a></li>
                 </ul>
             </li>
@@ -53,7 +52,7 @@
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-<pre style="--h: px;">
+<pre style="--h: 300px;">
 <code class="language-javascript">
 async function selection(){
     const ele = document.querySelectorAll(".bar");
@@ -72,13 +71,13 @@ async function selection(){
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-<pre style="--h: px;">
+<pre style="--h: 300px;">
 <code class="language-javascript">
 void selectionSort(int[] a, int n) {
-    for (int i = 0; i < n - 1; i++) {
+    for(int i = 0; i < n - 1; i++) {
         int min = i;
-        for (int j = i + 1; j < n; j++){
-            if (a[j] < a[min]){
+        for(int j = i + 1; j < n; j++){
+            if(a[j] < a[min]){
                 min = j;
             }
         }
@@ -108,7 +107,7 @@ void selectionSort(int[] a, int n) {
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-<pre style="--h: px;">
+<pre style="--h: 320px;">
 <code class="language-javascript">
 async function insertion(){
     const ele = document.querySelectorAll(".bar");
@@ -128,7 +127,7 @@ async function insertion(){
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-<pre style="--h: px;">
+<pre style="--h: 320px;">
 <code class="language-javascript">
 void insertionSort(int[] a, int n) {
 	for(int i = 1; i < n; i++) {
@@ -160,7 +159,7 @@ void insertionSort(int[] a, int n) {
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-<pre style="--h: px;">
+<pre style="--h: 320px;">
 <code class="language-javascript">
 async function bubble() {
     const ele = document.querySelectorAll(".bar");
@@ -177,7 +176,7 @@ async function bubble() {
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-<pre style="--h: px;">
+<pre style="--h: 320px;">
 <code class="language-javascript">
 void bubbleSort(int[] a, int n) {
 	int k = 0;
@@ -213,20 +212,20 @@ void bubbleSort(int[] a, int n) {
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-<pre style="--h: px;">
+<pre style="--h: 460px;">
 <code class="language-javascript">
 async function shellSort() {
     const elements = document.querySelectorAll('.bar');
     const n = elements.length;
     let gap = Math.floor(n / 2);
 
-    while (gap > 0) {
-        for (let i = gap; i < n; i++) {
+    while(gap > 0) {
+        for(let i = gap; i < n; i++) {
             const current = elements[i];
             const currentValue = parseInt(current.style.height);
             let j = i;
 
-            while (j >= gap && parseInt(elements[j - gap].style.height) > currentValue) {
+            while(j >= gap && parseInt(elements[j - gap].style.height) > currentValue) {
                 swap(elements[j], elements[j - gap]);
 
                 j -= gap;
@@ -240,7 +239,7 @@ async function shellSort() {
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-<pre style="--h: px;">
+<pre style="--h: 460px;">
 <code class="language-javascript">
 void shellSort(int[] a, int n) {
     for(int h = n / 2; h > 0; h /= 2){
@@ -275,7 +274,7 @@ void shellSort(int[] a, int n) {
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-<pre style="--h: px;">
+<pre style="--h: 490px;">
 <code class="language-javascript">
 async function partitionLomuto(ele, l, r){
     let i = l - 1;
@@ -303,7 +302,7 @@ async function quickSort(ele, l, r){
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-<pre style="--h: px;">
+<pre style="--h: 490px;">
 <code class="language-javascript">
 void quickSort(int[] a, int left, int right) {
 	int pl = left;
@@ -340,14 +339,14 @@ void quickSort(int[] a, int left, int right) {
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-<pre style="--h: px;">
+<pre style="--h: 860px;">
 <code class="language-javascript">
 async function heapSort(arr, n) {
-    for (var i = n / 2 - 1; i >= 0; i--) {
+    for(var i = n / 2 - 1; i >= 0; i--) {
         await heapify(arr, n, i);
     }
 
-    for (var i = n - 1; i > 0; i--) {
+    for(var i = n - 1; i > 0; i--) {
         var temp = arr[0];
         arr[0] = arr[i];
         arr[i] = temp;
@@ -362,17 +361,17 @@ async function heapify(arr, n, i) {
     var l = 2 * i + 1;
     var r = 2 * i + 2;
 
-    if (l < n && parseInt(arr[l].style.height) > parseInt(arr[largest].style.height)) {
+    if(l < n && parseInt(arr[l].style.height) > parseInt(arr[largest].style.height)) {
         largest = l;
         swap(arr[largest], arr[l]);
     }
 
-    if (r < n && parseInt(arr[r].style.height) > parseInt(arr[largest].style.height)) { 
+    if(r < n && parseInt(arr[r].style.height) > parseInt(arr[largest].style.height)) { 
         largest = r;
         swap(arr[largest], arr[r]);
     }
 
-    if (largest != i) {
+    if(largest != i) {
         var temp = arr[i];
         arr[i] = arr[largest];
         arr[largest] = temp;
@@ -386,9 +385,45 @@ async function heapify(arr, n, i) {
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-<pre style="--h: px;">
+<pre style="--h: 860px;">
 <code class="language-javascript">
+public void heapSort(int[] arr) {
+    int n = arr.length;
 
+    for(int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+
+    for(int i = n - 1; i > 0; i--) {
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+    }
+}
+
+void heapify(int[] arr, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if(left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    if(right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    if(largest != i) {
+        int temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+
+        heapify(arr, n, largest);
+    }
+}
 </code>
 </pre>
                     </div>
@@ -409,7 +444,7 @@ async function heapify(arr, n, i) {
                 <div class="codes">
                     <div class="js">
                         <div class="title">Javascript</div>
-<pre style="--h: px;">
+<pre style="--h: 1000px;">
 <code class="language-javascript">
 async function merge(ele, low, mid, high){
     const n1 = mid - low + 1;
@@ -462,9 +497,49 @@ async function mergeSort(ele, l, r){
                     </div>
                     <div class="java">
                         <div class="title">Java</div>
-<pre style="--h: px;">
+<pre style="--h: 1000px;">
 <code class="language-javascript">
+public void mergeSort(int[] arr) {
+    int n = arr.length;
+    if(n <= 1) {
+        return;
+    }
+    int mid = n / 2;
 
+    int[] left = new int[mid];
+    int[] right = new int[n - mid];
+
+    System.arraycopy(arr, 0, left, 0, mid);
+    System.arraycopy(arr, mid, right, 0, n - mid);
+
+    mergeSort(left);
+    mergeSort(right);
+
+    merge(arr, left, right);
+}
+
+private void merge(int[] arr, int[] left, int[] right) {
+    int i = 0;
+    int j = 0;
+    int k = 0;
+
+    while(i < left.length && j < right.length) {
+        if(left[i] <= right[j]) {
+            arr[k++] = left[i++];
+        }
+        else {
+            arr[k++] = right[j++];
+        }
+    }
+
+    while(i < left.length) {
+        arr[k++] = left[i++];
+    }
+
+    while(j < right.length) {
+        arr[k++] = right[j++];
+    }
+}
 </code>
 </pre>
                     </div>
@@ -557,7 +632,6 @@ async function mergeSort(ele, l, r){
                             <li><a href="sorting/quick.html">퀵 정렬</a></li>
                             <li><a href="sorting/heap.html">힙 정렬</a></li>
                             <li><a href="sorting/merge.html">합병 정렬</a></li>
-                            <li><a href="sorting/count.html">카운트 정렬</a></li>
                             <li><a href="sorting/raidx.html">기수 정렬</a></li>
                         </ul>
                     </li>

@@ -80,6 +80,9 @@ button {
     border-radius: 50%;
     background-color: #33a3ee;
 }
+.control .value_control #speed:disabled::-webkit-slider-thumb{
+    background: #555;
+}
 .control .value_control #size{
     width: 300px;
     height: 2px;
@@ -87,6 +90,16 @@ button {
     -webkit-appearance: none;
     outline: none;
     border-radius: 2px;
+}
+#size::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #33a3ee;
+}
+.control .value_control #size:disabled::-webkit-slider-thumb{
+    background: #555;
 }
 .control .value_control #sizeValue{
     position: absolute;
@@ -106,13 +119,6 @@ button {
     left: -5px;
     width: 10px;
     height: 10px;
-    background: #33a3ee;
-}
-#size::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
     background: #33a3ee;
 }
 

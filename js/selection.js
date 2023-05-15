@@ -6,12 +6,11 @@ async function selection(){
             return;
         }
         let min_index = i;
-        ele[i].style.background = '#55ff55';
         for(let j = i+1; j < ele.length; j++){
             if(hasPressedStop){
                 return;
             }
-            ele[j].style.background = 'cyan';
+            ele[j].style.background = '#ffd54f';
 
             await delayTime(interval);
             if(hasPressedStop){
@@ -27,13 +26,15 @@ async function selection(){
                 ele[j].style.background = '#695cfe';
             }
         }
+        ele[min_index].style.background = "#f06292";
+        ele[i].style.background = "#f06292";
         await delayTime(interval);
         if(hasPressedStop){
             return;
         }
         swap(ele[min_index], ele[i]);
         ele[min_index].style.background = '#695cfe';
-        ele[i].style.background = 'green';
+        ele[i].style.background = '#338a3e';
     }
 }
 

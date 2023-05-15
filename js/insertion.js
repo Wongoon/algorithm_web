@@ -1,14 +1,14 @@
 const inSortbtn = document.querySelector("#play");
 async function insertion(){
     const ele = document.querySelectorAll(".bar");
-    ele[0].style.background = 'green';
+    ele[0].style.background = '#338a3e';
     for(let i = 1; i < ele.length; i++){
         if(hasPressedStop){
             return;
         }
         let j = i - 1;
         let key = ele[i].style.height;
-        ele[i].style.background = '#55ffff';
+        ele[i].style.background = '#ffd54f';
 
         await delayTime(interval);
         if(hasPressedStop){
@@ -19,7 +19,7 @@ async function insertion(){
             if(hasPressedStop){
                 return;
             }
-            ele[j].style.background = '#55ffff';
+            ele[j].style.background = '#ffd54f';
             ele[j + 1].style.height = ele[j].style.height;
             j--;
 
@@ -28,11 +28,11 @@ async function insertion(){
                 return;
             }
             for(let k = i; k >= 0; k--){
-                ele[k].style.background = 'green';
+                ele[k].style.background = '#338a3e';
             }
         }
         ele[j + 1].style.height = key;
-        ele[i].style.background = 'green';
+        ele[i].style.background = '#338a3e';
     }
 }
 

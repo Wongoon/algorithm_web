@@ -31,10 +31,10 @@ async function merge(ele, low, mid, high){
         
         if(parseInt(left[i]) <= parseInt(right[j])){
             if((n1 + n2) === ele.length){
-                ele[k].style.background = 'green';
+                ele[k].style.background = '#338a3e';
             }
             else{
-                ele[k].style.background = '#2a265f';
+                ele[k].style.background = '#695cfe';
             }
             
             ele[k].style.height = left[i];
@@ -43,10 +43,10 @@ async function merge(ele, low, mid, high){
         }
         else{
             if((n1 + n2) === ele.length){
-                ele[k].style.background = 'green';
+                ele[k].style.background = '#338a3e';
             }
             else{
-                ele[k].style.background = '#2a265f';
+                ele[k].style.background = '#695cfe';
             } 
             ele[k].style.height = right[j];
             j++;
@@ -59,10 +59,10 @@ async function merge(ele, low, mid, high){
         }
         await delayTime(interval);
         if((n1 + n2) === ele.length){
-            ele[k].style.background = 'green';
+            ele[k].style.background = '#338a3e';
         }
         else{
-            ele[k].style.background = '#2a265f';
+            ele[k].style.background = '#695cfe';
         }
         ele[k].style.height = left[i];
         i++;
@@ -74,10 +74,10 @@ async function merge(ele, low, mid, high){
         }
         await delayTime(interval);
         if((n1 + n2) === ele.length){
-            ele[k].style.background = 'green';
+            ele[k].style.background = '#338a3e';
         }
         else{
-            ele[k].style.background = '#2a265f';
+            ele[k].style.background = '#695cfe';
         }
         ele[k].style.height = right[j];
         j++;
