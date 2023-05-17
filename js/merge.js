@@ -29,7 +29,7 @@ async function merge(ele, low, mid, high){
         }
         await delayTime(interval);
         
-        if(parseInt(left[i]) <= parseInt(right[j])){
+        if(parseFloat(left[i]) <= parseFloat(right[j])){
             if((n1 + n2) === ele.length){
                 ele[k].style.background = '#338a3e';
             }
@@ -99,7 +99,7 @@ mergeSortbtn.addEventListener('click', async function(){
     let ele = document.querySelectorAll('.bar');
     let l = 0;
     hasPressedStop = false;
-    let r = parseInt(ele.length) - 1;
+    let r = parseFloat(ele.length) - 1;
     disableSortingBtn();
     disableSizeSlider();
     disableNewArrayBtn();

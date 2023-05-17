@@ -11,10 +11,10 @@ async function shellSort() {
             }
 
             const current = elements[i];
-            const currentValue = parseInt(current.style.height);
+            const currentValue = parseFloat(current.style.height);
             let j = i;
 
-            while (j >= gap && parseInt(elements[j - gap].style.height) > currentValue) {
+            while (j >= gap && parseFloat(elements[j - gap].style.height) > currentValue) {
                 if (hasPressedStop) {
                     return;
                 }
@@ -35,8 +35,6 @@ async function shellSort() {
 
                 j -= gap;
             }
-
-            elements[j].style.background = '#338a3e';
         }
 
         gap = Math.floor(gap / 2);

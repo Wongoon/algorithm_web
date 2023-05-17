@@ -5,6 +5,7 @@ async function selection(){
         if(hasPressedStop){
             return;
         }
+        ele[i].style.background = "#f06292";
         let min_index = i;
         for(let j = i+1; j < ele.length; j++){
             if(hasPressedStop){
@@ -16,7 +17,7 @@ async function selection(){
             if(hasPressedStop){
                 return;
             }
-            if(parseInt(ele[j].style.height) < parseInt(ele[min_index].style.height)){
+            if(parseFloat(ele[j].style.height) < parseFloat(ele[min_index].style.height)){
                 if(min_index !== i){
                     ele[min_index].style.background = '#695cfe';
                 }
@@ -26,15 +27,17 @@ async function selection(){
                 ele[j].style.background = '#695cfe';
             }
         }
-        ele[min_index].style.background = "#f06292";
-        ele[i].style.background = "#f06292";
         await delayTime(interval);
         if(hasPressedStop){
             return;
         }
         swap(ele[min_index], ele[i]);
         ele[min_index].style.background = '#695cfe';
+        ele[i].style.background = '#695cfe';
+    }
+    for(let i = 0; i < ele.length; i++){
         ele[i].style.background = '#338a3e';
+        await delayTime(interval / 8);
     }
 }
 

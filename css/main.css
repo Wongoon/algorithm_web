@@ -100,7 +100,7 @@ body.dark .nav_in > li > a:hover{
 }
 
 .container{
-    width: 1400px;
+    width: 90%;
     min-height: 300px;
     margin: 0 auto;
     position: relative;

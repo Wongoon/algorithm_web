@@ -11,7 +11,7 @@ async function partitionLomuto(ele, l, r){
         if(hasPressedStop){
             return;
         }
-        if(parseInt(ele[j].style.height) < parseInt(ele[r].style.height)){
+        if(parseFloat(ele[j].style.height) < parseFloat(ele[r].style.height)){
             i++;
             swap(ele[i], ele[j]);
             ele[i].style.background = 'orange';
@@ -32,7 +32,6 @@ async function partitionLomuto(ele, l, r){
     }
     swap(ele[i], ele[r]);
     ele[r].style.background = 'pink';
-    ele[i].style.background = '#338a3e';
 
     if(hasPressedStop){
         return;
@@ -41,10 +40,10 @@ async function partitionLomuto(ele, l, r){
     if(hasPressedStop){
         return;
     }
-    
     for(let k = 0; k < ele.length; k++){
-        if(ele[k].style.background != '#338a3e')
+        if(ele[k].style.background != '#338a3e'){
             ele[k].style.background = '#695cfe';
+        }
     }
 
     return i;
@@ -55,12 +54,6 @@ async function quickSort(ele, l, r){
         let pivot_index = await partitionLomuto(ele, l, r);
         await quickSort(ele, l, pivot_index - 1);
         await quickSort(ele, pivot_index + 1, r);
-    }
-    else{
-        if(l >= 0 && r >= 0 && l < ele.length && r < ele.length){
-            ele[r].style.background = '#338a3e';
-            ele[l].style.background = '#338a3e';
-        }
     }
 }
 
@@ -76,6 +69,7 @@ quickSortbtn.addEventListener('click', async function(){
     await quickSort(ele, l, r);
     for(let i = 0; i < ele.length; i++){
         ele[i].style.background = '#338a3e';
+        await delayTime(interval / 8);
     }
     if(hasPressedStop){
         disableSpeedSlider();

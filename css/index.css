@@ -5,6 +5,7 @@
     font-style: normal;
 }
 .container{
+    width: 1400px;
     height: 1100px;
     margin-bottom: 100px;
 }

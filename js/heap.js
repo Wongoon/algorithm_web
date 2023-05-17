@@ -15,11 +15,14 @@ async function heapSort(arr, n) {
         arr[0] = arr[i];
         arr[i] = temp;
         arr[0].style.background = '#ffd54f';
-        arr[i].style.background = '#338a3e';
         swap(arr[0], arr[i]);
         await delayTime(interval);
 
         await heapify(arr, i, 0);
+    }
+    for(let i = 0; i < arr.length; i++){
+        arr[i].style.background = '#338a3e';
+        await delayTime(interval / 8);
     }
 }
 
@@ -31,12 +34,12 @@ async function heapify(arr, n, i) {
     var l = 2 * i + 1;
     var r = 2 * i + 2;
 
-    if (l < n && parseInt(arr[l].style.height) > parseInt(arr[largest].style.height)) {
+    if (l < n && parseFloat(arr[l].style.height) > parseFloat(arr[largest].style.height)) {
         largest = l;
         swap(arr[largest], arr[l]);
     }
 
-    if (r < n && parseInt(arr[r].style.height) > parseInt(arr[largest].style.height)) {
+    if (r < n && parseFloat(arr[r].style.height) > parseFloat(arr[largest].style.height)) {
         largest = r;
         swap(arr[largest], arr[r]);
     }
@@ -61,7 +64,6 @@ heapSortbtn.addEventListener("click", async function () {
     disableNewArrayBtn();
     enableStopSortingBtn();
     await heapSort(arr, n);
-    arr[0].style.background = '#338a3e';
     if (hasPressedStop) {
         disableSpeedSlider();
     } else {
