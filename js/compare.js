@@ -1,9 +1,3 @@
-function swap(el1, el2) {
-    let temp = el1.style.height;
-    el1.style.height = el2.style.height;
-    el2.style.height = temp;
-}
-
 function disableSortingBtn(){
     document.querySelector("#play").disabled = true;
 }
@@ -43,13 +37,6 @@ function enableStopSortingBtn(){
 function disableStopSortingBtn(){
     document.querySelector("#stop").disabled = true;
 }
-
-function delayTime(milisec) { 
-    return new Promise(resolve => {
-        setTimeout(() => { resolve('') }, milisec); 
-    });
-}
-
 let arraySize = document.querySelector('#size');
 let inputSize = document.querySelector('#sizeValue');
 let size = parseInt(arraySize.value);
@@ -97,21 +84,29 @@ function createNewArray(length) {
         }
     }
 
-    const bars = document.querySelector(".canvas");
+    const bars1 = document.querySelector("#canvas1");
+    const bars2 = document.querySelector("#canvas2");
 
     for (let i = 0; i < length; i++) {
-        const bar = document.createElement("div");
+        const bar1 = document.createElement("div");
+        const bar2 = document.createElement("div");
         let height = 100 / length;
-        bar.style.height = barArray[i] * height + '%';
-        bar.style.width = 'calc(100% /' + length + ')';
-        bar.classList.add('bar');
-        bars.appendChild(bar);
+        bar1.style.height = barArray[i] * height + '%';
+        bar1.style.width = 'calc(100% /' + length + ')';
+        bar1.classList.add('bar');
+        bars1.appendChild(bar1);
+        bar2.style.height = barArray[i] * height + '%';
+        bar2.style.width = 'calc(100% /' + length + ')';
+        bar2.classList.add('bar');
+        bars2.appendChild(bar2);
     }
 }
 
 function deleteChild() {
-    const bar = document.querySelector(".canvas");
-    bar.innerHTML = '';
+    const bar1 = document.querySelector("#canvas1");
+    const bar2 = document.querySelector("#canvas2");
+    bar1.innerHTML = '';
+    bar2.innerHTML = '';
 }
 
 const newArrayButton = document.querySelector("#random");

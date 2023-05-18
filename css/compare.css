@@ -5,7 +5,31 @@
     flex-direction: column;
     margin-top: 30px;
 }
-
+.content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.sort{
+    margin: 20px;
+    width: 100%;
+}
+.canvas{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    height: 250px;
+    margin-bottom: 20px;
+    background: #e7e7e7;
+    padding: 20px;
+}
+.bar{
+    margin-right: 1px;
+    background: #695cfe;
+    transition: none;
+}
 .dropdown{
     min-width: 200px;
     position: relative;
@@ -13,7 +37,6 @@
 }
 .dropdown .select{
     background: var(--header-clr);
-    color: var(--text-clr);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,6 +52,11 @@
 }
 .select:hover{
     background: var(--primary-clr);
+}
+.selected{
+    color: var(--text-clr);
+}
+.select:hover .selected{
     color: var(--header-clr);
 }
 .caret{
@@ -57,7 +85,7 @@
     z-index: 1;
 }
 .menu li{
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -65,8 +93,149 @@
     background: #2a2d35;
 }
 .active{
-    background: #23242a;
+    background: var(--primary-clr);
+    color: var(--header-clr);
 }
 .menu-open{
-    height: 554px;
+    height: 472px;
+}
+.control{
+    display: flex;
+    position: relative;
+    width: 800px;
+    margin: 50px 0;
+    flex-direction: column;
+    align-items: center;
+}
+.control .value_control{
+    width: 700px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.control .value_control div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.control .value_control #rangeValue{
+    position: absolute;
+    top: 1px;
+    left: -70px;
+    padding: 2px;
+    width: 60px;
+    background-color: #33a3ee;
+    color: #fff;
+    text-align: center;
+}
+.control .value_control #rangeValue::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    right: -5px;
+    background-color: #33a3ee;
+    color: #fff;
+}
+.control .value_control #speed{
+    position: relative;
+    width: 300px;
+    height: 2px;
+    background: #333;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 2px;
+}
+.control .value_control #speed::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #33a3ee;
+}
+.control .value_control #speed:disabled::-webkit-slider-thumb{
+    background: #555;
+}
+.control .value_control #size{
+    width: 300px;
+    height: 2px;
+    background: #333;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 2px;
+}
+#size::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #33a3ee;
+}
+.control .value_control #size:disabled::-webkit-slider-thumb{
+    background: #555;
+}
+.control .value_control #sizeValue{
+    position: absolute;
+    top: 0;
+    right: -70px;
+    font-size: 16px;
+    padding: 2px;
+    width: 60px;
+    background: #33a3ee;
+    color: #fff;
+    text-align: center;
+    outline: none;
+    border: none;
+}
+.control .value_control #sizeValue::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    background: #33a3ee;
+}
+.control .value_control #sizeValue::-webkit-outer-spin-button,
+.control .value_control #sizeValue::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.btnlist{
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.btnlist .btn{
+    display: block;
+    width: 200px;
+    padding: 20px;
+    background: var(--primary-clr);
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(105, 92, 254, 0.1);
+    transition: box-shadow background 0.2s;
+}
+.btn:hover .btn:focus, .btn:active{
+    box-shadow: 0 0 40px rgba(105, 92, 254, 0.5);
+    transform: scale(0.95);
+    transition: background 0.2s;
+}
+.btn:disabled{
+    background: #555;
 }
