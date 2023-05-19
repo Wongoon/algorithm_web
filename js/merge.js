@@ -30,24 +30,13 @@ async function merge(ele, low, mid, high){
         await delayTime(interval);
         
         if(parseFloat(left[i]) <= parseFloat(right[j])){
-            if((n1 + n2) === ele.length){
-                ele[k].style.background = '#338a3e';
-            }
-            else{
-                ele[k].style.background = '#695cfe';
-            }
-            
+            ele[k].style.background = '#695cfe';
             ele[k].style.height = left[i];
             i++;
             k++;
         }
         else{
-            if((n1 + n2) === ele.length){
-                ele[k].style.background = '#338a3e';
-            }
-            else{
-                ele[k].style.background = '#695cfe';
-            } 
+            ele[k].style.background = '#695cfe';
             ele[k].style.height = right[j];
             j++;
             k++;
@@ -58,12 +47,7 @@ async function merge(ele, low, mid, high){
             return;
         }
         await delayTime(interval);
-        if((n1 + n2) === ele.length){
-            ele[k].style.background = '#338a3e';
-        }
-        else{
-            ele[k].style.background = '#695cfe';
-        }
+        ele[k].style.background = '#695cfe';
         ele[k].style.height = left[i];
         i++;
         k++;
@@ -73,12 +57,7 @@ async function merge(ele, low, mid, high){
             return;
         }
         await delayTime(interval);
-        if((n1 + n2) === ele.length){
-            ele[k].style.background = '#338a3e';
-        }
-        else{
-            ele[k].style.background = '#695cfe';
-        }
+        ele[k].style.background = '#695cfe';
         ele[k].style.height = right[j];
         j++;
         k++;
@@ -107,10 +86,15 @@ mergeSortbtn.addEventListener('click', async function(){
     await mergeSort(ele, l, r);
     if(hasPressedStop){
         disableSpeedSlider();
-    } else {
-        enableSortingBtn();
-        enableSizeSlider();
     }
+    else {
+        enableSizeSlider();
+        for (let i = 0; i < ele.length; i++){
+            ele[i].style.background = '#338a3e';
+            await delayTime(interval / 8);
+        }
+    }
+    enableResetBtn();
     enableNewArrayBtn();
     disableStopSortingBtn();
 });

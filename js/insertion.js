@@ -34,13 +34,10 @@ async function insertion(){
         ele[j + 1].style.height = key;
         ele[i].style.background = '#695cfe';
     }
-    for(let i = 0; i < ele.length; i++){
-        ele[i].style.background = '#338a3e';
-        await delayTime(interval / 8);
-    }
 }
 
 inSortbtn.addEventListener('click', async function(){
+    const ele = document.querySelectorAll('.bar');
     hasPressedStop = false;
     disableSortingBtn();
     disableSizeSlider();
@@ -49,10 +46,15 @@ inSortbtn.addEventListener('click', async function(){
     await insertion();
     if(hasPressedStop){
         disableSpeedSlider();
-    } else {
-        enableSortingBtn();
-        enableSizeSlider();
     }
+    else {
+        enableSizeSlider();
+        for(let i = 0; i < ele.length; i++){
+            ele[i].style.background = '#338a3e';
+            await delayTime(interval / 8);
+        }
+    }
+    enableResetBtn();
     enableNewArrayBtn();
     disableStopSortingBtn();
 });

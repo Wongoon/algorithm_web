@@ -20,10 +20,6 @@ async function heapSort(arr, n) {
 
         await heapify(arr, i, 0);
     }
-    for(let i = 0; i < arr.length; i++){
-        arr[i].style.background = '#338a3e';
-        await delayTime(interval / 8);
-    }
 }
 
 async function heapify(arr, n, i) {
@@ -55,21 +51,26 @@ async function heapify(arr, n, i) {
 }
 
 heapSortbtn.addEventListener("click", async function () {
-    let arr = document.querySelectorAll('.bar');
-    let n = arr.length;
+    let ele = document.querySelectorAll('.bar');
+    let n = ele.length;
 
     hasPressedStop = false;
     disableSortingBtn();
     disableSizeSlider();
     disableNewArrayBtn();
     enableStopSortingBtn();
-    await heapSort(arr, n);
+    await heapSort(ele, n);
     if (hasPressedStop) {
         disableSpeedSlider();
-    } else {
-        enableSortingBtn();
-        enableSizeSlider();
     }
+    else {
+        enableSizeSlider();
+        for(let i = 0; i < n; i++){
+            ele[i].style.background = '#338a3e';
+            await delayTime(interval / 8);
+        }
+    }
+    enableResetBtn();
     enableNewArrayBtn();
     disableStopSortingBtn();
 });

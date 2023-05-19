@@ -67,16 +67,17 @@ quickSortbtn.addEventListener('click', async function(){
     disableNewArrayBtn();
     enableStopSortingBtn();
     await quickSort(ele, l, r);
-    for(let i = 0; i < ele.length; i++){
-        ele[i].style.background = '#338a3e';
-        await delayTime(interval / 8);
-    }
     if(hasPressedStop){
         disableSpeedSlider();
-    } else {
-        enableSortingBtn();
-        enableSizeSlider();
     }
+    else {
+        enableSizeSlider();
+        for(let i = 0; i < ele.length; i++){
+            ele[i].style.background = '#338a3e';
+            await delayTime(interval / 8);
+        }
+    }
+    enableResetBtn();
     enableNewArrayBtn();
     disableStopSortingBtn();
 });

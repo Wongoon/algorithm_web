@@ -17,13 +17,10 @@ async function bubble() {
         }
         ele[ele.length - 1 - i].style.background = '#695cfe';
     }
-    for(let i = 0; i < ele.length; i++){
-        ele[i].style.background = '#338a3e';
-        await delayTime(interval / 8);
-    }
 }
 
 bubSortbtn.addEventListener('click', async function(){
+    const ele = document.querySelectorAll('.bar');
     hasPressedStop = false;
     disableSortingBtn();
     disableSizeSlider();
@@ -32,10 +29,15 @@ bubSortbtn.addEventListener('click', async function(){
     await bubble();
     if(hasPressedStop){
         disableSpeedSlider();
-    } else {
-        enableSortingBtn();
-        enableSizeSlider();
     }
+    else {
+        enableSizeSlider();
+        for(let i = 0; i < ele.length; i++){
+            ele[i].style.background = '#338a3e';
+            await delayTime(interval / 8);
+        }
+    }
+    enableResetBtn();
     enableNewArrayBtn();
     disableStopSortingBtn();
 });

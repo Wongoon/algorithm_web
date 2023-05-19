@@ -163,6 +163,9 @@ button {
 .btn:disabled{
     background: #555;
 }
+.invisible{
+    display: none !important;
+}
 
 .contents{
     width: 100%;

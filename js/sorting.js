@@ -44,6 +44,16 @@ function disableStopSortingBtn(){
     document.querySelector("#stop").disabled = true;
 }
 
+function enableResetBtn(){
+    document.querySelector("#reset").classList.remove('invisible');
+    document.querySelector("#play").classList.add('invisible');
+}
+
+function disableResetBtn(){
+    document.querySelector("#reset").classList.add('invisible');
+    document.querySelector("#play").classList.remove('invisible');
+}
+
 function delayTime(milisec) { 
     return new Promise(resolve => {
         setTimeout(() => { resolve('') }, milisec); 
@@ -107,6 +117,9 @@ function createNewArray(length) {
         bar.classList.add('bar');
         bars.appendChild(bar);
     }
+    enableSpeedSlider();
+    disableResetBtn();
+    enableSortingBtn();
 }
 
 function deleteChild() {
@@ -114,12 +127,23 @@ function deleteChild() {
     bar.innerHTML = '';
 }
 
+function ResetArray(){
+    const bars = document.querySelectorAll(".bar");
+    for(let i = 0; i < bars.length; i++){
+        bars[i].style.height = 100 * barArray[i] / size + '%';
+        bars[i].style.background = "#695cfe";
+    }
+    hasPressedStop = false;
+}
+
+let hasPressedStop = false;
 const newArrayButton = document.querySelector("#random");
 newArrayButton.addEventListener("click", function(){
     hasPressedStop = false;
     enableSpeedSlider();
     enableSortingBtn();
     enableSizeSlider();
+    disableResetBtn();
     createNewArray(arraySize.value);
 });
 
@@ -127,5 +151,16 @@ const stopSortingButton = document.querySelector("#stop");
 stopSortingButton.addEventListener("click", function(){
     disableSortingBtn();
     disableSizeSlider();
+    disableResetBtn();
+    enableSizeSlider();
     hasPressedStop = true;
-})
+});
+
+const resetBtn = document.querySelector("#reset");
+resetBtn.addEventListener("click", function(){
+    ResetArray();
+    disableResetBtn();
+    enableSortingBtn();
+    enableSpeedSlider();
+});
+
