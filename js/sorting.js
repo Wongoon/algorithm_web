@@ -163,4 +163,3 @@ resetBtn.addEventListener("click", function(){
     enableSortingBtn();
     enableSpeedSlider();
 });
-

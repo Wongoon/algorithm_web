@@ -37,6 +37,13 @@ function enableStopSortingBtn(){
 function disableStopSortingBtn(){
     document.querySelector("#stop").disabled = true;
 }
+
+function swap(el1, el2) {
+    let temp = el1.style.height;
+    el1.style.height = el2.style.height;
+    el2.style.height = temp;
+}
+
 let arraySize = document.querySelector('#size');
 let inputSize = document.querySelector('#sizeValue');
 let size = parseInt(arraySize.value);
@@ -67,6 +74,12 @@ speedRange.addEventListener('input', function(){
     interval = 125 / parseFloat(speedRange.value);
     document.getElementById('rangeValue').innerHTML = this.value + 'x';
 });
+
+function delayTime(milisec) { 
+    return new Promise(resolve => {
+        setTimeout(() => { resolve('') }, milisec); 
+    });
+}
 
 let barArray = [];
 
@@ -100,6 +113,8 @@ function createNewArray(length) {
         bar2.classList.add('bar');
         bars2.appendChild(bar2);
     }
+    enableSpeedSlider();
+    enableSortingBtn();
 }
 
 function deleteChild() {
@@ -109,6 +124,7 @@ function deleteChild() {
     bar2.innerHTML = '';
 }
 
+let hasPressedStop = false;
 const newArrayButton = document.querySelector("#random");
 newArrayButton.addEventListener("click", function(){
     hasPressedStop = false;
@@ -122,5 +138,105 @@ const stopSortingButton = document.querySelector("#stop");
 stopSortingButton.addEventListener("click", function(){
     disableSortingBtn();
     disableSizeSlider();
+    enableSizeSlider();
     hasPressedStop = true;
-})
+});
+
+const sortingButton = document.querySelector("#play");
+sortingButton.addEventListener('click', async function(){
+    const bar1 = document.querySelectorAll('#canvas1 .bar');
+    const bar2 = document.querySelectorAll('#canvas2 .bar');
+    const select1 = document.querySelector('#select1');
+    const select2 = document.querySelector('#select2');
+    
+    hasPressedStop = false;
+    disableSortingBtn();
+    disableSizeSlider();
+    disableNewArrayBtn();
+    enableStopSortingBtn();
+    await sorting(bar1, bar2, select1, select2);
+    if(hasPressedStop){
+        disableSpeedSlider();
+    }
+    else {
+        enableSizeSlider();
+    }
+    enableNewArrayBtn();
+    disableStopSortingBtn();
+});
+
+async function runSimultaneously(sort1, sort2){
+    let promise1 = sort1;
+    let promise2 = sort2;
+
+    await Promise.all([promise1, promise2]);
+}
+
+function func(){
+    console.log('func');
+}
+
+async function sorting(bar1, bar2, select1, select2){
+    let sort1 = func();
+    let sort2 = func();
+    switch (select1.innerHTML){
+        case '단순 선택 정렬':
+            sort1 = selectionSort(bar1);
+            break;
+        case '단순 삽입 정렬':
+            sort1 = insertionSort(bar1);
+            break;
+        case '버블 정렬':
+            sort1 = bubbleSort(bar1);
+            break;
+        case '셸 정렬':
+            sort1 = shellSort(bar1);
+            break;
+        case '퀵 정렬':
+            sort1 = quickSort(bar1, 0, bar1.length - 1);
+            break;
+        case '힙 정렬':
+            sort1 = heapSort(bar1, bar1.length);
+            break;
+        case '합병 정렬':
+            sort1 = mergeSort(bar1, 0, bar1.length - 1);
+            break;
+        case '기수 정렬':
+            sort1 = radixSort(bar1, barArray);
+            break;
+        default:
+            alert('Error');
+            break;
+    }
+    switch (select2.innerHTML){
+        case '단순 선택 정렬':
+            sort2 = selectionSort(bar2);
+            break;
+        case '단순 삽입 정렬':
+            sort2 = insertionSort(bar2);
+            break;
+        case '버블 정렬':
+            sort2 = bubbleSort(bar2);
+            break;
+        case '셸 정렬':
+            sort2 = shellSort(bar2);
+            break;
+        case '퀵 정렬':
+            sort2 = quickSort(bar2, 0, bar2.length - 1);
+            break;
+        case '힙 정렬':
+            sort2 = heapSort(bar2, bar2.length);
+            break;
+        case '합병 정렬':
+            sort2 = mergeSort(bar2, 0, bar2.length - 1);
+            break;
+        case '기수 정렬':
+            sort2 = radixSort(bar2, barArray);
+            break;
+        default:
+            alert('Error');
+            break;
+    }
+    await runSimultaneously(sort1, sort2);
+    console.log('finish');
+}

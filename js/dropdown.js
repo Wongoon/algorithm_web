@@ -14,14 +14,27 @@ dropdowns.forEach(dropdown => {
 
     options.forEach(option => {
         option.addEventListener('click', function(){
-            selected.innerText = option.innerText;
+            if(selected.id == 'select1'){
+                if(option.innerHTML != document.querySelector('#select2').innerHTML){
+                    selected.innerText = option.innerText;
+                    options.forEach(option => {
+                        option.classList.remove('active');
+                    });
+                    option.classList.add('active');
+                }
+            }
+            else if(selected.id == 'select2'){
+                if(option.innerHTML != document.querySelector('#select1').innerHTML){
+                    selected.innerText = option.innerText;
+                    options.forEach(option => {
+                        option.classList.remove('active');
+                    });
+                    option.classList.add('active');
+                }
+            }
             select.classList.remove('select-clicked');
             caret.classList.remove('caret-rotate');
             menu.classList.remove('menu-open');
-            options.forEach(option => {
-                option.classList.remove('active');
-            });
-            option.classList.add('active');
         });
     });
 });
