@@ -161,6 +161,7 @@ sortingButton.addEventListener('click', async function(){
     else {
         enableSizeSlider();
     }
+    enableSortingBtn();
     enableNewArrayBtn();
     disableStopSortingBtn();
 });
