@@ -136,10 +136,10 @@ newArrayButton.addEventListener("click", function(){
 
 const stopSortingButton = document.querySelector("#stop");
 stopSortingButton.addEventListener("click", function(){
+    hasPressedStop = true;
     disableSortingBtn();
     disableSizeSlider();
     enableSizeSlider();
-    hasPressedStop = true;
 });
 
 const sortingButton = document.querySelector("#play");
@@ -160,8 +160,8 @@ sortingButton.addEventListener('click', async function(){
     }
     else {
         enableSizeSlider();
+        enableSortingBtn();
     }
-    enableSortingBtn();
     enableNewArrayBtn();
     disableStopSortingBtn();
 });
@@ -174,7 +174,7 @@ async function runSimultaneously(sort1, sort2){
 }
 
 function func(){
-    console.log('func');
+    
 }
 
 async function sorting(bar1, bar2, select1, select2){
@@ -239,5 +239,4 @@ async function sorting(bar1, bar2, select1, select2){
             break;
     }
     await runSimultaneously(sort1, sort2);
-    console.log('finish');
 }
