@@ -1,15 +1,8 @@
-const body = document.querySelector('body');
-const btn = document.getElementById('btn');
 const dontmove = document.querySelector('.dontmove');
 const menu = document.querySelector('#sub');
 const navIn = document.querySelector('.nav_in');
 
 let toggle = true;
-
-btn.addEventListener('click', () => {
-    btn.classList.toggle('active');
-    body.classList.toggle('dark');
-});
 
 dontmove.addEventListener('click', (e) => {
     e.preventDefault();
