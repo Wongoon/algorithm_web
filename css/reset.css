@@ -17,6 +17,7 @@
     --toggle-clr: #ddd;
     --text-clr: #505050;
     --black: #000;
+    --compare-text-clr: #505050;
 }
 body{
     width:100%;
@@ -36,6 +37,7 @@ body.dark{
     --toggle-clr: #fff;
     --text-clr: #aaa;
     --black: #ddd;
+    --compare-text-clr: #aaa;
 }
 ul, ol{
     list-style: none;

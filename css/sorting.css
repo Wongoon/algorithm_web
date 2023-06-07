@@ -6,14 +6,33 @@
     flex-direction: column;
     margin-top: 30px;
 }
+.algorithm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    height: 140px;
+}
+.algorithm span{
+    text-align: center;
+    color: var(--black);
+    margin: 10px;
+}
+.algorithm span.title{
+    font-size: 24px;
+}
+.algorithm span.subtitle{
+    font-size: 18px;
+}
 .canvas{
     width: 100%;
     display: flex;
     align-items: flex-end;
     height: 500px;
     margin-bottom: 20px;
-    background: #e7e7e7;
+    background: #fafafa;
     padding: 20px;
+    border: 3px solid #695cfe;
 }
 .bar{
     margin-right: 1px;

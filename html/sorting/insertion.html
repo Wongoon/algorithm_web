@@ -30,12 +30,16 @@
     </header>
 
     <div class="container">
+        <div class="algorithm">
+            <span class="title">단순 삽입 정렬</span>
+            <span class="subtitle">Insertion Sort</span>
+        </div>
         <div class="canvas"></div>
         <div class="control">
             <div class="value_control">
                 <div class="range">
-                    <input type="range" name="speed" id="speed" min=0.5 max=16.0 step=0.25 value=8.0>
-                    <span id="rangeValue">8x</span>
+                    <input type="range" name="speed" id="speed" min=0.5 max=32.0 step=0.25 value=16.0>
+                    <span id="rangeValue">16x</span>
                 </div>
                 <div class="size">
                     <input type="range" name="size" id="size" min=10 max=250 step=1 value=50>
@@ -83,7 +87,7 @@
     </footer>
     <script src="../../js/main.js" type="text/javascript"></script>
     <script src="../../js/sorting.js" type="text/javascript" async defer></script>
-    <script src="../../js/insertion.js" type="text/javascript" async defer></script>
+    <script src="../../js/algorithm/insertion.js" type="text/javascript" async defer></script>
     <script src="../../js/darkmode.js"></script>
 </body>
 </html>

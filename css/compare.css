@@ -24,8 +24,9 @@
     align-items: flex-end;
     height: 500px;
     margin-bottom: 20px;
-    background: #e7e7e7;
+    background: #fafafa;
     padding: 20px;
+    border: 3px solid #695cfe;
 }
 .bar{
     margin-right: 1px;
@@ -56,7 +57,7 @@
     background: var(--primary-clr);
 }
 .selected{
-    color: var(--text-clr);
+    color: var(--compare-text-clr);
 }
 .select:hover .selected{
     color: var(--header-clr);
@@ -66,17 +67,20 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 6px solid var(--text-clr);
+    border-top: 6px solid var(--compare-text-clr);
     transition: all 0.3s;
 }
 .caret-rotate{
     transform: rotate(180deg);
 }
+.select:hover .caret{
+    border-top-color: var(--header-clr);
+}
 .menu{
-    background: #323741;
+    background: var(--header-clr);
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    color: #9fa5b5;
+    color: var(--compare-text-clr);
     position: absolute;
     left: 50%;
     width: 100%;
@@ -92,7 +96,8 @@
     cursor: pointer;
 }
 .menu li:hover{
-    background: #2a2d35;
+    background: var(--primary-clr);
+    color: var(--header-clr);
 }
 .active{
     background: var(--primary-clr);
@@ -101,6 +106,12 @@
 .menu-open{
     height: 472px;
 }
+body.dark .active,
+body.dark .menu li:hover,
+body.dark .select:hover .selected{
+    color: var(--compare-text-clr);
+}
+
 .control{
     display: flex;
     position: relative;
