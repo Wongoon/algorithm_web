@@ -65,24 +65,16 @@ button {
 }
 .control .value_control #rangeValue{
     position: absolute;
-    top: 1px;
+    top: 0;
     left: -70px;
+    font-size: 16px;
     padding: 2px;
     width: 60px;
     background-color: #33a3ee;
     color: #fff;
     text-align: center;
-}
-.control .value_control #rangeValue::before{
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-    width: 10px;
-    height: 10px;
-    right: -5px;
-    background-color: #33a3ee;
-    color: #fff;
+    outline: none;
+    border: none;
 }
 .control .value_control #speed{
     position: relative;
@@ -134,18 +126,10 @@ button {
     outline: none;
     border: none;
 }
-.control .value_control #sizeValue::before{
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-    left: -5px;
-    width: 10px;
-    height: 10px;
-    background: #33a3ee;
-}
 .control .value_control #sizeValue::-webkit-outer-spin-button,
-.control .value_control #sizeValue::-webkit-inner-spin-button{
+.control .value_control #sizeValue::-webkit-inner-spin-button,
+.control .value_control #rangeValue::-webkit-outer-spin-button,
+.control .value_control #rangeValue::-webkit-inner-spin-button{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

@@ -84,11 +84,23 @@ inputSize.addEventListener('change', function(){
 });
 
 let speedRange = document.querySelector('#speed');
-let interval = 125 / parseFloat(speedRange.value);
+let speedSize = document.querySelector('#rangeValue');
+let interval = parseInt(speedRange.value);
 
 speedRange.addEventListener('input', function(){
-    interval = 125 / parseFloat(speedRange.value);
-    document.getElementById('rangeValue').innerHTML = this.value + 'x';
+    interval = parseInt(speedRange.value);
+    speedSize.value = interval;
+});
+
+speedSize.addEventListener('change', function(){
+    if(parseInt(speedSize.value) < parseInt(speedSize.min)){
+        speedSize.value = parseInt(speedSize.min);
+    }
+    if(parseInt(speedSize.value) > parseInt(speedSize.max)){
+        speedSize.value = parseInt(speedSize.max);
+    }
+    speedRange.value = parseInt(speedSize.value);
+    interval = parseInt(speedRange.value);
 });
 
 let barArray = [];

@@ -63,7 +63,7 @@ shellSortbtn.addEventListener('click', async function () {
         enableSizeSlider();
         for(let i = 0; i < ele.length; i++){
             ele[i].style.background = '#338a3e';
-            await delayTime(interval / 8);
+            await delayTime(interval);
         }
     }
     enableResetBtn();
