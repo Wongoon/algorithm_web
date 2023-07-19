@@ -217,6 +217,7 @@ async function heapSort(arr, n) {
 
         await heapify(arr, i, 0);
     }
+    arr[0].style.background = '#695cfe';
 }
 
 async function heapify(arr, n, i) {
